@@ -1,3 +1,10 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-04-15 14:23:57
+ * @LastEditTime: 2019-08-21 16:11:51
+ * @LastEditors: Please set LastEditors
+ -->
 
 <script>
 import "./index.css";
@@ -50,9 +57,9 @@ export default {
         push: {
           finished: true
         },
-        picture:{
-          show:false,
-          url:''
+        picture: {
+          show: false,
+          url: ""
         }
       },
 
@@ -88,7 +95,7 @@ export default {
     /**
      * 获取工作台详情
      */
-    getWorkBench(history=false) {
+    getWorkBench(history = false) {
       return new Promise(resolve => {
         getWorkBench()
           .then(res => {
@@ -96,24 +103,26 @@ export default {
             this.work.status = res.workStatus;
 
             // 获取数据改变之前的orderActive 的 orderId
-             
+
             let currentOrderActive = this.getCurOrderAcitve();
-            let historyOrderId = currentOrderActive && currentOrderActive['orderId']
+            let historyOrderId =
+              currentOrderActive && currentOrderActive["orderId"];
 
             this.order.list = this.getOrderList(res.list);
             this.detail = res.detail;
 
-            if (this.order.list.length > 0) { 
-              let historyOrderIdIndex = this.order.list.findIndex(item=>{
-                return item['orderId'] == historyOrderId
-              })
-              if(history){
-                this.order.activeIndex = historyOrderIdIndex > -1 ? historyOrderIdIndex : 0;
-              }else{
-                this.order.activeIndex = 0
-                this.role.activeIndex = -1
+            if (this.order.list.length > 0) {
+              let historyOrderIdIndex = this.order.list.findIndex(item => {
+                return item["orderId"] == historyOrderId;
+              });
+              if (history) {
+                this.order.activeIndex =
+                  historyOrderIdIndex > -1 ? historyOrderIdIndex : 0;
+              } else {
+                this.order.activeIndex = 0;
+                this.role.activeIndex = -1;
               }
-              
+
               this.getAppealDetail();
             }
             resolve(res.list);
@@ -330,7 +339,7 @@ export default {
     closeSocket() {
       if (this._socket) {
         this._socket.disconnect();
-        this._socket = null
+        this._socket = null;
       }
     },
     /**
@@ -345,19 +354,24 @@ export default {
           console.log(message);
 
           // 过滤出是该位置可能收到的信息
-          // 否则会影响会员交流模块的信息 
+          // 否则会影响会员交流模块的信息
 
-          if( message.uidType != 1 && message.uidType != 4)   return 
+          if (message.uidType != 1 && message.uidType != 4) return;
 
           // 判断当前数据和当前选择的订单和角色进行匹配
-          
 
           let curOrderActive = this.getCurOrderAcitve();
-          if(curOrderActive && message["orderSn"] == curOrderActive["orderSn"]){
+          if (
+            curOrderActive &&
+            message["orderSn"] == curOrderActive["orderSn"]
+          ) {
             let curRoleActive = this.getCurRoleAcitve();
-            if(curRoleActive && message["uidType"] == curRoleActive["uidFromType"]){
-              this.getChatHistory() // 如果是当前聊天对象，则改变聊天信息的可读性,通过再次获取历史记录信息即可
-            }else{
+            if (
+              curRoleActive &&
+              message["uidType"] == curRoleActive["uidFromType"]
+            ) {
+              this.getChatHistory(); // 如果是当前聊天对象，则改变聊天信息的可读性,通过再次获取历史记录信息即可
+            } else {
               this.role.list.forEach(item => {
                 if (item["uidFromType"] == message["uidType"]) {
                   item["cnt"]++;
@@ -369,9 +383,9 @@ export default {
                 }
               });
             }
-          }else{
-             this.handlerOrderList(message);
-          } 
+          } else {
+            this.handlerOrderList(message);
+          }
         }
       );
     },
@@ -453,7 +467,7 @@ export default {
             {
               message: "当前没有选择申诉订单！",
               rule: function(value, rules, regexs) {
-                return value> -1;
+                return value > -1;
               }
             }
           ]
@@ -464,7 +478,7 @@ export default {
             {
               message: "当前没有选择聊天对象！",
               rule: function(value, rules, regexs) {
-                return value >-1;
+                return value > -1;
               }
             }
           ]
@@ -524,7 +538,7 @@ export default {
             {
               message: "当前没有选择申诉订单！",
               rule: function(value, rules, regexs) {
-                return value > -1 ;
+                return value > -1;
               }
             }
           ]
@@ -588,25 +602,25 @@ export default {
      * 选择申诉订单
      */
     changeOrder(item, index) {
-      if(this.order.activeIndex == index) return
+      if (this.order.activeIndex == index) return;
       this.order.activeIndex = index;
       this.role.activeIndex = -1;
-      this.chat.list = []
-      this.chat.push.finished = true
+      this.chat.list = [];
+      this.chat.push.finished = true;
       this.getAppealDetail(this.order.list[this.order.activeIndex]["orderId"]);
     },
     /**
      * 选择角色
      */
     changeRole: function(item, index) {
-      if(this.role.activeIndex == index) return
+      if (this.role.activeIndex == index) return;
       this.role.activeIndex = index;
       this.getChatHistory();
     },
     /**
      * 改变工作状态
      */
-    changeWorkStatus: function() { 
+    changeWorkStatus: function() {
       Promise.resolve({
         then: resolve => {
           this.$Modal.confirm({
@@ -657,7 +671,7 @@ export default {
     /**
      * 放大图片
      */
-    showPicture(url){
+    showPicture(url) {
       this.chat.picture.url = url;
       this.chat.picture.show = true;
     },
@@ -745,31 +759,20 @@ export default {
 
 <template>
   <div class="vv-custom">
-    <Modal v-model='chat.picture.show'>
-      <div
-        class=""
-        style="text-align:center"
-      >
-        <img
-          :src="chat.picture.url"
-          alt=""
-        >
+    <Modal v-model="chat.picture.show">
+      <div class="" style="text-align:center">
+        <img :src="chat.picture.url" alt="" />
       </div>
       <div slot="footer"></div>
     </Modal>
     <Card>
-      <p slot='title'>
+      <p slot="title">
         申诉工作台
-        <Button
-          type="primary"
-          size="small"
-          @click="init"
-        >
+        <Button type="primary" size="small" @click="init">
           <Icon type="refresh"></Icon> 刷新
         </Button>
       </p>
       <div class="vv-custom--body">
-
         <div
           v-css.size|height:50px|width:100%
           v-css.position|position:absolute|left:0|top:0
@@ -777,7 +780,7 @@ export default {
           <div v-css.flex|items:center>
             <div v-css.flex-item|flex:2>
               <Button
-                :type=" work.status === 1 ? 'default' : 'primary'"
+                :type="work.status === 1 ? 'default' : 'primary'"
                 size="large"
                 long
                 @click="changeWorkStatus"
@@ -789,177 +792,181 @@ export default {
               v-css.flex-item|flex:1
               v-css.flex|direction:column|items:center
             >
-              <span
-                v-css.text|size:12px
-                v-css.margin|bm:5px
-              >未处理订单</span>
-              <span v-css.text|color:#6560ff|bold>{{ message['undoAppealCnt']}}</span>
+              <span v-css.text|size:12px v-css.margin|bm:5px>未处理订单</span>
+              <span v-css.text|color:#6560ff|bold>{{
+                message["undoAppealCnt"]
+              }}</span>
             </div>
             <div
               v-css.flex-item|flex:1
               v-css.flex|direction:column|items:center
             >
-              <span
-                v-css.text|size:12px
-                v-css.margin|bm:5px
-              >正在处理订单</span>
-              <span v-css.text|color:#6560ff|bold>{{ message['doingAppealCnt']}}</span>
+              <span v-css.text|size:12px v-css.margin|bm:5px>正在处理订单</span>
+              <span v-css.text|color:#6560ff|bold>{{
+                message["doingAppealCnt"]
+              }}</span>
             </div>
             <div
               v-css.flex-item|flex:1
               v-css.flex|direction:column|items:center
             >
-              <span
-                v-css.text|size:12px
-                v-css.margin|bm:5px
-              >今日已处理订单</span>
-              <span v-css.text|color:#6560ff|bold>{{ message['todayAppealCnt']}}</span>
+              <span v-css.text|size:12px v-css.margin|bm:5px
+                >今日已处理订单</span
+              >
+              <span v-css.text|color:#6560ff|bold>{{
+                message["todayAppealCnt"]
+              }}</span>
             </div>
             <div
               v-css.flex-item|flex:1
               v-css.flex|direction:column|items:center
             >
-              <span
-                v-css.text|size:12px
-                v-css.margin|bm:5px
-              >正在处理订单（我的）</span>
-              <span v-css.text|color:#6560ff|bold>{{ message['myDoingAppealCnt']}}</span>
+              <span v-css.text|size:12px v-css.margin|bm:5px
+                >正在处理订单（我的）</span
+              >
+              <span v-css.text|color:#6560ff|bold>{{
+                message["myDoingAppealCnt"]
+              }}</span>
             </div>
             <div
               v-css.flex-item|flex:1
               v-css.flex|direction:column|items:center
             >
-              <span
-                v-css.text|size:12px
-                v-css.margin|bm:5px
-              >今日已处理订单（我的）</span>
-              <span v-css.text|color:#6560ff|bold>{{ message['myTodayAppealCnt']}}</span>
+              <span v-css.text|size:12px v-css.margin|bm:5px
+                >今日已处理订单（我的）</span
+              >
+              <span v-css.text|color:#6560ff|bold>{{
+                message["myTodayAppealCnt"]
+              }}</span>
             </div>
           </div>
         </div>
 
-        <div
-          class="vv-custom--nav"
-          v-if=' order.list.length > 0 '
-        >
+        <div class="vv-custom--nav" v-if="order.list.length > 0">
           <div
-            class='vv-custom--nav-item'
-            v-for="(item,index) in order.list"
-            :key=index
-            :class="{'is-active':index == order.activeIndex }"
-            @click='changeOrder(item,index)'
+            class="vv-custom--nav-item"
+            v-for="(item, index) in order.list"
+            :key="index"
+            :class="{ 'is-active': index == order.activeIndex }"
+            @click="changeOrder(item, index)"
             v-css.flex|justify:space-between
           >
-            <p>{{ item['orderSn']}}</p>
-            <template v-if="item['cnt'] !== 0 ">
+            <p>{{ item["orderSn"] }}</p>
+            <template v-if="item['cnt'] !== 0">
               <mui-tag :label="item['cnt']"></mui-tag>
             </template>
           </div>
         </div>
 
-        <div
-          class="vv-custom--info"
-          v-if=' order.list.length > 0 '
-        >
+        <div class="vv-custom--info" v-if="order.list.length > 0">
           <div class="vv-custom--role">
             <div
-              class='vv-custom--role-item'
-              :class="{'is-active':index == role.activeIndex }"
-              v-for="(item,index) in role.list"
-              :key=index
-              @click='changeRole(item,index)'
+              class="vv-custom--role-item"
+              :class="{ 'is-active': index == role.activeIndex }"
+              v-for="(item, index) in role.list"
+              :key="index"
+              @click="changeRole(item, index)"
             >
               <div v-css.flex|justify:space-between v-css.margin|bm:5px>
-                <p>{{ item['label']}}</p>
-                <template v-if="item['cnt'] !== 0 ">
+                <p>{{ item["label"] }}</p>
+                <template v-if="item['cnt'] !== 0">
                   <mui-tag :label="item['cnt']"></mui-tag>
                 </template>
               </div>
-              <p v-css.text|size:12px>
-                {{ item['userName']}}
+              <p v-css.text|size:12px style="text-indent:20px">
+                {{ item["userName"] }}
               </p>
-
             </div>
           </div>
 
-          <div class='vv-custom--info-item'>
+          <div class="vv-custom--info-item">
             <p>交易方式</p>
-            <p v-css.text|size:12px>
-              {{ detail['payMode']}}
+            <p v-css.text|size:12px style="text-indent:20px">
+              {{ detail["payMode"] }}
             </p>
           </div>
-          <div class='vv-custom--info-item'>
+          <div class="vv-custom--info-item">
             <p>交易金额</p>
-            <p v-css.text|size:12px>￥ {{ detail['money']}}</p>
+            <p v-css.text|size:12px style="text-indent:20px">
+              ￥ {{ detail["money"] }}
+            </p>
           </div>
-          <div class='vv-custom--info-item'>
+          <div class="vv-custom--info-item">
             <p>交易类型</p>
-            <p v-css.text|size:12px>{{ getOrderType(detail['advertiseType']) }}</p>
-          </div>
-          <div class='vv-custom--info-item'>
-            <p>申诉时间</p>
-            <p v-css.text|size:12px>{{ detail['appealTime']}}</p>
+            <p v-css.text|size:12px style="text-indent:20px">
+              {{ getOrderType(detail["advertiseType"]) }}
+            </p>
           </div>
 
-          <div class='vv-custom--info-item'>
-            <p>订单状态</p>
-            <p v-css.text|size:12px>{{ getOrderStatus(detail['khStatus']) }}</p>
+          <div class="vv-custom--info-item">
+            <p>状态</p>
+            <p v-css.text|size:12px style="text-indent:20px">
+              交易：{{ ['已取消', '未付款', '已付款', '已完成'][detail["orderStatus"]] }}
+            </p>
+            <p v-css.text|size:12px style="text-indent:20px">
+              申诉：{{ getOrderStatus(detail["khStatus"]) }}
+            </p>
+          </div>
+
+          <div class="vv-custom--info-item">
+            <p>时间</p>
+            <p v-css.text|size:12px style="text-indent:20px">
+              申诉：{{ detail["appealTime"] }}
+            </p>
+            <p
+              v-css.text|size:12px
+              style="text-indent:20px"
+              v-if="!!detail['cancelTime']"
+            >
+              取消：{{ detail["cancelTime"] }}
+            </p>
+            <p
+              v-css.text|size:12px
+              style="text-indent:20px"
+              v-if="!!detail['releaseTime']"
+            >
+              完成：{{ detail["releaseTime"] }}
+            </p>
           </div>
 
           <div v-css.padding|lt-rt:10px>
-            <Button
-              size="large"
-              long
-              @click="closeAppeal()"
-            >
+            <Button size="large" long @click="closeAppeal()">
               关闭申述
             </Button>
           </div>
         </div>
 
-        <div
-          class="vv-custom--chat"
-          v-if="order.list.length > 0"
-        >
-          <div
-            class="chat"
-            ref='chat'
-          >
-            <div class='chat-body'>
-              <div
-                class="chat-more"
-                v-if='!chat.push.finished'
-              >
-                <span @click='getChatHistory(true)'>加载更多</span>
+        <div class="vv-custom--chat" v-if="order.list.length > 0">
+          <div class="chat" ref="chat">
+            <div class="chat-body">
+              <div class="chat-more" v-if="!chat.push.finished">
+                <span @click="getChatHistory(true)">加载更多</span>
               </div>
               <div
                 class="chat-item"
-                v-for="(item,i) in chat.list"
-                :key='i'
-                :class="{'is-left':!isMine(item),'is-right': isMine(item) }"
+                v-for="(item, i) in chat.list"
+                :key="i"
+                :class="{ 'is-left': !isMine(item), 'is-right': isMine(item) }"
               >
-
-                <template v-if='!isMine(item)'>
+                <template v-if="!isMine(item)">
                   <div class="chat-head">
                     <div class="chat-head-inner vc-flex--center">
-
-                      <span class="chat-name">{{ item['nameFrom'] ? item['nameFrom'].split('')[0] : '' }}</span>
+                      <span class="chat-name">{{
+                        item["nameFrom"] ? item["nameFrom"].split("")[0] : ""
+                      }}</span>
                       <!-- {{ item['nameFrom'] ? item['nameFrom'].split('')[0] : '' }} -->
                     </div>
                   </div>
 
                   <div>
-
                     <div class="chat-name-detail">
-
-                      <span>{{ item['nameFrom'] }}</span>
-
+                      <span>{{ item["nameFrom"] }}</span>
                     </div>
 
                     <div class="chat-content">
                       <div>
                         <div v-if="item['type'] === 0">
-                          <span class="chat-info">{{item['content']}}</span>
+                          <span class="chat-info">{{ item["content"] }}</span>
                         </div>
                         <div
                           v-if="item['type'] === 1"
@@ -969,37 +976,27 @@ export default {
                             :src="item['content']"
                             alt=""
                             style="max-width:200px;max-height:200px"
-                          >
+                          />
                         </div>
-
                       </div>
                       <i class="chat-point"></i>
                     </div>
-                    <div
-                      class='chat-time'
-                      v-if="item['sendTimeStr']"
-                    >
-                      {{ item['sendTimeStr'] }}
-
+                    <div class="chat-time" v-if="item['sendTimeStr']">
+                      {{ item["sendTimeStr"] }}
                     </div>
                   </div>
-
                 </template>
 
-                <template v-if='isMine(item)'>
-                  <div style='margin-top:20px'>
-
-                    <div
-                      class="chat-name-detail"
-                      v-if=false
-                    >
+                <template v-if="isMine(item)">
+                  <div style="margin-top:20px">
+                    <div class="chat-name-detail" v-if="false">
                       客服
                     </div>
 
                     <div class="chat-content">
                       <div>
                         <div v-if="item['type'] === 0">
-                          <span class="chat-info">{{item['content']}}</span>
+                          <span class="chat-info">{{ item["content"] }}</span>
                         </div>
                         <div
                           v-if="item['type'] === 1"
@@ -1009,18 +1006,13 @@ export default {
                             :src="item['content']"
                             alt=""
                             style="max-width:200px;max-height:200px"
-                          >
+                          />
                         </div>
-
                       </div>
                       <i class="chat-point"></i>
                     </div>
-                    <div
-                      class='chat-time'
-                      v-if="item['sendTimeStr']"
-                    >
-                      {{ item['sendTimeStr'] }}
-
+                    <div class="chat-time" v-if="item['sendTimeStr']">
+                      {{ item["sendTimeStr"] }}
                     </div>
                   </div>
                   <div class="chat-head">
@@ -1030,42 +1022,25 @@ export default {
                     </div>
                   </div>
                 </template>
-
               </div>
-
             </div>
-
           </div>
           <div class="chat-send">
-
-            <label
-              for="file"
-              class="upload"
-            >
-              <Icon
-                type="image"
-                size='36'
-              ></Icon>
-              <input
-                type="file"
-                id='file'
-                @change='selectPic'
-              >
+            <label for="file" class="upload">
+              <Icon type="image" size="36"></Icon>
+              <input type="file" id="file" @change="selectPic" />
             </label>
 
-            <div class='chat-send__input'>
+            <div class="chat-send__input">
               <Input
-                v-model='chat.message'
-                size='large'
+                v-model="chat.message"
+                size="large"
                 @keyup.enter.native="sendMessage"
                 placeholder="输入聊天内容 按回车键可发送"
               ></Input>
             </div>
 
-            <Button
-              type='primary'
-              @click='sendMessage'
-            >发送</Button>
+            <Button type="primary" @click="sendMessage">发送</Button>
           </div>
         </div>
       </div>

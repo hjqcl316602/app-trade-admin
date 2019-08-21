@@ -1,3 +1,10 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-04-23 10:25:32
+ * @LastEditTime: 2019-08-21 15:42:36
+ * @LastEditors: Please set LastEditors
+ -->
 
 <script>
 import { queryCustomWorkBench, getAgainCustom } from "@/service/custom";
@@ -72,8 +79,8 @@ export default {
           },
           {
             title: "操作",
-            width:100,
-            render:(h, obj)=> {
+            width: 100,
+            render: (h, obj) => {
               return h(
                 "Button",
                 {
@@ -170,62 +177,40 @@ export default {
     <Card>
       <p slot="title">
         申诉
-        <Button
-          type="primary"
-          size="small"
-          @click="init"
-        >
-          <Icon type="refresh"></Icon> 刷新
+        <Button type="primary" size="small" @click="init">
+          <Icon type="refresh"></Icon> 刷新刷新刷新
         </Button>
       </p>
       <Row class="functionWrapper">
-        <Col
-          :span='8'
-          class="panel-item"
-        >
-        <span class='functionWrapper'>未处理订单</span>
-        <span>{{ message['undoAppealCnt']}}</span>
+        <Col :span="8" class="panel-item">
+          <span class="functionWrapper">未处理订单</span>
+          <span>{{ message["undoAppealCnt"] }}</span>
         </Col>
-        <Col
-          :span='8'
-          class="panel-item"
-        >
-        <span class='functionWrapper'>正在处理订单</span>
-        <span>{{ message['doingAppealCnt']}}</span>
+        <Col :span="8" class="panel-item">
+          <span class="functionWrapper">正在处理订单</span>
+          <span>{{ message["doingAppealCnt"] }}</span>
         </Col>
-        <Col
-          :span='8'
-          class="panel-item"
-        >
-        <span class='functionWrapper'>今日已处理订单</span>
-        <span>{{ message['todayAppealCnt']}}</span>
+        <Col :span="8" class="panel-item">
+          <span class="functionWrapper">今日已处理订单</span>
+          <span>{{ message["todayAppealCnt"] }}</span>
         </Col>
 
-        <Col
-          :span='12'
-          class="panel-item"
-        >
-        <span class='functionWrapper'>正在处理订单（我的）</span>
-        <span>{{ message['myDoingAppealCnt']}}</span>
+        <Col :span="12" class="panel-item">
+          <span class="functionWrapper">正在处理订单（我的）</span>
+          <span>{{ message["myDoingAppealCnt"] }}</span>
         </Col>
-        <Col
-          :span='12'
-          class="panel-item"
-        >
-        <span class='functionWrapper'>今日已处理订单（我的）</span>
-        <span>{{ message['myTodayAppealCnt']}}</span>
+        <Col :span="12" class="panel-item">
+          <span class="functionWrapper">今日已处理订单（我的）</span>
+          <span>{{ message["myTodayAppealCnt"] }}</span>
         </Col>
       </Row>
       <Row class="functionWrapper">
         <div class="searchWrapper clearfix">
-
           <div class="btns">
-            <Button
-              type="info"
-              @click="getAgainCustom"
-            >获取下一个申诉订单</Button>
+            <Button type="info" @click="getAgainCustom"
+              >获取下一个申诉订单</Button
+            >
           </div>
-
         </div>
       </Row>
       <Row>
@@ -237,7 +222,6 @@ export default {
         ></Table>
       </Row>
     </Card>
-
   </div>
 </template>
 
