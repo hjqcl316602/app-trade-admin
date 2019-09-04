@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-01-22 18:05:47
- * @LastEditTime: 2019-09-04 17:03:36
+ * @LastEditTime: 2019-09-04 20:57:20
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -349,7 +349,7 @@ export default {
           if (xhr.status === 200) {
             const json = JSON.parse(xhr.responseText);
             const imgUrl = self.config.uploadCallback(json);
-            success(imgUrl);
+            success(imgUrl.url);
           } else {
             if (self.config.uploadFailed) {
               self.config.uploadFailed(xhr.responseText);
