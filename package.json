@@ -35,6 +35,7 @@
         "simplemde": "^1.11.2",
         "smeditor": "^0.1.19",
         "sortablejs": "^1.7.0",
+        "store-es": "^2.1.0",
         "store-js-basis": "^1.0.3",
         "time-formater": "^1.0.1",
         "tinymce": "^4.7.3",

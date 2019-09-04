@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-04-15 14:23:57
- * @LastEditTime: 2019-08-21 16:11:51
+ * @LastEditTime: 2019-09-04 20:10:03
  * @LastEditors: Please set LastEditors
  -->
 
@@ -18,6 +18,7 @@ import {
   closeAppeal,
   setChatStatus
 } from "@/service/custom";
+import { stringer } from "store-es";
 
 import { uploadImage } from "@/service/common";
 
@@ -449,130 +450,62 @@ export default {
      * 发送文本信息
      */
     sendMessage() {
-      let valid = [
-        {
-          value: this.chat.connected,
-          rules: [
-            {
-              message: "当前聊天室连接未成功，请重试！",
-              rule: function(value, rules, regexs) {
-                return !!value;
-              }
-            }
-          ]
-        },
-        {
-          value: this.order.activeIndex,
-          rules: [
-            {
-              message: "当前没有选择申诉订单！",
-              rule: function(value, rules, regexs) {
-                return value > -1;
-              }
-            }
-          ]
-        },
-        {
-          value: this.role.activeIndex,
-          rules: [
-            {
-              message: "当前没有选择聊天对象！",
-              rule: function(value, rules, regexs) {
-                return value > -1;
-              }
-            }
-          ]
-        },
-        {
-          value: this.chat.message,
-          rules: [
-            {
-              message: "聊天内容不能为空！",
-              rule: function(value, rules, regexs) {
-                return !rules.isFalsy(value);
-              }
-            },
-            {
-              message: "聊天内容不能全部为空字符串！",
-              rule: function(value, rules, regexs) {
-                return !regexs.empty.test(value);
-              }
-            },
-            {
-              message: "聊天内容长度不能超过150",
-              rule: function(value, rules, regexs) {
-                return value.length < 151;
-              }
-            }
-          ]
-        }
-      ];
-      let message = this.$validators.validator(valid);
-      if (message === true) {
-        this.sendSocketMessage({ content: this.chat.message, type: 0 });
-        this.chat.message = "";
-      } else {
-        this.$Message.error(message);
+      // console.log(stringer);
+      if (!this.chat.connected) {
+        this.$Message.error("当前聊天室连接未成功，请重试！");
+        return;
       }
+      if (this.order.activeIndex === -1) {
+        this.$Message.error("当前没有选择申诉订单！");
+        return;
+      }
+      if (this.role.activeIndex === -1) {
+        this.$Message.error("当前没有选择聊天对象！");
+        return;
+      }
+
+      if (this.chat.message === "") {
+        this.$Message.error("聊天内容不能为空！");
+        return;
+      }
+      if (stringer.check.space.whole(this.chat.message)) {
+        this.$Message.error("聊天内容不能全部为空字符串！");
+        return;
+      }
+
+      if (this.chat.message.length > 150) {
+        this.$Message.error("聊天内容长度不能超过150");
+        return;
+      }
+
+      this.sendSocketMessage({ content: this.chat.message, type: 0 });
+      this.chat.message = "";
     },
 
     /**
      * 发送图片信息
      */
     sendPic() {
-      let valid = [
-        {
-          value: this.chat.connected,
-          rules: [
-            {
-              message: "当前聊天室连接未成功，请重试！",
-              rule: function(value, rules, regexs) {
-                return !!value;
-              }
-            }
-          ]
-        },
-        {
-          value: this.order.activeIndex,
-          rules: [
-            {
-              message: "当前没有选择申诉订单！",
-              rule: function(value, rules, regexs) {
-                return value > -1;
-              }
-            }
-          ]
-        },
-        {
-          value: this.role.activeIndex,
-          rules: [
-            {
-              message: "当前没有选择聊天对象！",
-              rule: function(value, rules, regexs) {
-                return value != null;
-              }
-            }
-          ]
-        },
-        {
-          value: this.chat.pic,
-          rules: [
-            {
-              message: "发送失败，请重新尝试！",
-              rule: function(value, rules, regexs) {
-                return !!value;
-              }
-            }
-          ]
-        }
-      ];
-      let message = this.$validators.validator(valid);
-      if (message === true) {
-        this.sendSocketMessage({ content: this.chat.pic, type: 1 });
-        this.chat.pic = "";
-      } else {
-        this.$Message.error(message);
+      if (!this.chat.connected) {
+        this.$Message.error("当前聊天室连接未成功，请重试！");
+        return;
       }
+      if (this.order.activeIndex === -1) {
+        this.$Message.error("当前没有选择申诉订单！");
+        return;
+      }
+      if (this.role.activeIndex === -1) {
+        this.$Message.error("当前没有选择聊天对象！");
+        return;
+      }
+
+      if (this.chat.pic === "") {
+        this.$Message.error("图片发送失败，请重新尝试！");
+        return;
+      }
+
+      this.sendSocketMessage({ content: this.chat.pic, type: 1 });
+      this.chat.pic = "";
     },
     /**
      * 让滚动条始终在底部
@@ -773,87 +706,73 @@ export default {
         </Button>
       </p>
       <div class="vv-custom--body">
-        <div
-          v-css.size|height:50px|width:100%
-          v-css.position|position:absolute|left:0|top:0
-        >
-          <div v-css.flex|items:center>
-            <div v-css.flex-item|flex:2>
-              <Button
-                :type="work.status === 1 ? 'default' : 'primary'"
-                size="large"
-                long
-                @click="changeWorkStatus"
-              >
-                {{ getWorkStatus(work.status) }}工作
-              </Button>
-            </div>
-            <div
-              v-css.flex-item|flex:1
-              v-css.flex|direction:column|items:center
+        <div class="vv-custom--header">
+          <div style="flex:2">
+            <Button
+              :type="work.status === 1 ? 'default' : 'primary'"
+              size="large"
+              long
+              @click="changeWorkStatus"
             >
-              <span v-css.text|size:12px v-css.margin|bm:5px>未处理订单</span>
-              <span v-css.text|color:#6560ff|bold>{{
-                message["undoAppealCnt"]
-              }}</span>
-            </div>
-            <div
-              v-css.flex-item|flex:1
-              v-css.flex|direction:column|items:center
-            >
-              <span v-css.text|size:12px v-css.margin|bm:5px>正在处理订单</span>
-              <span v-css.text|color:#6560ff|bold>{{
-                message["doingAppealCnt"]
-              }}</span>
-            </div>
-            <div
-              v-css.flex-item|flex:1
-              v-css.flex|direction:column|items:center
-            >
-              <span v-css.text|size:12px v-css.margin|bm:5px
-                >今日已处理订单</span
-              >
-              <span v-css.text|color:#6560ff|bold>{{
-                message["todayAppealCnt"]
-              }}</span>
-            </div>
-            <div
-              v-css.flex-item|flex:1
-              v-css.flex|direction:column|items:center
-            >
-              <span v-css.text|size:12px v-css.margin|bm:5px
-                >正在处理订单（我的）</span
-              >
-              <span v-css.text|color:#6560ff|bold>{{
-                message["myDoingAppealCnt"]
-              }}</span>
-            </div>
-            <div
-              v-css.flex-item|flex:1
-              v-css.flex|direction:column|items:center
-            >
-              <span v-css.text|size:12px v-css.margin|bm:5px
-                >今日已处理订单（我的）</span
-              >
-              <span v-css.text|color:#6560ff|bold>{{
-                message["myTodayAppealCnt"]
-              }}</span>
-            </div>
+              {{ getWorkStatus(work.status) }}工作
+            </Button>
+          </div>
+          <div class="vv-custom--info">
+            <span class="vui-text--small vui-margin-bottom--small">
+              未处理订单
+            </span>
+            <span class="vui-text--primary vui-text--bold"
+              >{{ message["undoAppealCnt"] }}
+            </span>
+          </div>
+          <div class="vv-custom--info">
+            <span class="vui-text--small vui-margin-bottom--small">
+              正在处理订单
+            </span>
+            <span class="vui-text--primary vui-text--bold">
+              {{ message["doingAppealCnt"] }}
+            </span>
+          </div>
+          <div class="vv-custom--info">
+            <span class="vui-text--small vui-margin-bottom--small">
+              今日已处理订单
+            </span>
+            <span class="vui-text--primary vui-text--bold">
+              {{ message["todayAppealCnt"] }}
+            </span>
+          </div>
+          <div class="vv-custom--info">
+            <span class="vui-text--small vui-margin-bottom--small">
+              正在处理订单（我的）
+            </span>
+            <span class="vui-text--primary vui-text--bold">
+              {{ message["myDoingAppealCnt"] }}
+            </span>
+          </div>
+          <div class="vv-custom--info">
+            <span class="vui-text--small vui-margin-bottom--small">
+              今日已处理订单（我的）
+            </span>
+            <span class="vui-text--primary vui-text--bold">
+              {{ message["myTodayAppealCnt"] }}
+            </span>
           </div>
         </div>
 
         <div class="vv-custom--nav" v-if="order.list.length > 0">
           <div
-            class="vv-custom--nav-item"
+            class="vv-custom--nav-item vui-grid vui-justify-content--space-between"
             v-for="(item, index) in order.list"
             :key="index"
             :class="{ 'is-active': index == order.activeIndex }"
             @click="changeOrder(item, index)"
-            v-css.flex|justify:space-between
           >
             <p>{{ item["orderSn"] }}</p>
             <template v-if="item['cnt'] !== 0">
-              <mui-tag :label="item['cnt']"></mui-tag>
+              <!-- <mui-tag :label="item['cnt']"></mui-tag> -->
+              <div class="vui-tag">
+                <div class="vui-tag--label">{{ item["cnt"] }}</div>
+              </div>
             </template>
           </div>
         </div>
@@ -867,13 +786,13 @@ export default {
               :key="index"
               @click="changeRole(item, index)"
             >
-              <div v-css.flex|justify:space-between v-css.margin|bm:5px>
+              <div class="vui-grid vui-justify-content--space-between">
                 <p>{{ item["label"] }}</p>
                 <template v-if="item['cnt'] !== 0">
                   <mui-tag :label="item['cnt']"></mui-tag>
                 </template>
               </div>
-              <p v-css.text|size:12px style="text-indent:20px">
+              <p style="text-indent:20px ;font-size:12px;">
                 {{ item["userName"] }}
               </p>
             </div>
@@ -881,55 +800,55 @@ export default {
 
           <div class="vv-custom--info-item">
             <p>交易方式</p>
-            <p v-css.text|size:12px style="text-indent:20px">
+            <p style="text-indent:20px ;font-size:12px;">
               {{ detail["payMode"] }}
             </p>
           </div>
           <div class="vv-custom--info-item">
             <p>交易金额</p>
-            <p v-css.text|size:12px style="text-indent:20px">
+            <p style="text-indent:20px ;font-size:12px;">
               ￥ {{ detail["money"] }}
             </p>
           </div>
           <div class="vv-custom--info-item">
             <p>交易类型</p>
-            <p v-css.text|size:12px style="text-indent:20px">
+            <p style="text-indent:20px ;font-size:12px;">
               {{ getOrderType(detail["advertiseType"]) }}
             </p>
           </div>
 
           <div class="vv-custom--info-item">
             <p>状态</p>
-            <p v-css.text|size:12px style="text-indent:20px">
-              交易：{{ ['已取消', '未付款', '已付款', '已完成'][detail["orderStatus"]] }}
+            <p style="text-indent:20px ;font-size:12px;">
+              交易：{{
+                ["已取消", "未付款", "已付款", "已完成"][detail["orderStatus"]]
+              }}
             </p>
-            <p v-css.text|size:12px style="text-indent:20px">
+            <p style="text-indent:20px ;font-size:12px;">
               申诉：{{ getOrderStatus(detail["khStatus"]) }}
             </p>
           </div>
 
           <div class="vv-custom--info-item">
             <p>时间</p>
-            <p v-css.text|size:12px style="text-indent:20px">
+            <p style="text-indent:20px ;font-size:12px;">
               申诉：{{ detail["appealTime"] }}
             </p>
             <p
-              v-css.text|size:12px
-              style="text-indent:20px"
+              style="font-size:12px;text-indent:20px"
               v-if="!!detail['cancelTime']"
             >
               取消：{{ detail["cancelTime"] }}
             </p>
             <p
-              v-css.text|size:12px
-              style="text-indent:20px"
+              style="font-size:12px;text-indent:20px"
               v-if="!!detail['releaseTime']"
             >
               完成：{{ detail["releaseTime"] }}
             </p>
           </div>
 
-          <div v-css.padding|lt-rt:10px>
+          <div style="padding:0 10px">
             <Button size="large" long @click="closeAppeal()">
               关闭申述
             </Button>
@@ -1037,9 +956,9 @@ export default {
                 size="large"
                 @keyup.enter.native="sendMessage"
                 placeholder="输入聊天内容 按回车键可发送"
-              ></Input>
+              >
+              </Input>
             </div>
-
             <Button type="primary" @click="sendMessage">发送</Button>
           </div>
         </div>

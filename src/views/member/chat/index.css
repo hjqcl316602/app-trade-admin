@@ -1,31 +1,36 @@
-
 .vv-chat--body {
   height: calc(100vh - 210px);
-  display: flex; 
+  display: flex;
   position: relative;
 }
- 
+
+.vv-user-item,
+.vv-room-item {
+  border-bottom: 1px solid #fafafa;
+  cursor: pointer;
+  padding: 16px;
+}
 
 .vv-user-item:hover,
-.vv-room-item:hover
-{
-   background-color: #f0f0f0 
+.vv-room-item:hover {
+  background-color: #f0f0f0
 }
+
 .vv-room-item.is-active {
   border-left: 2px solid #6560ff;
   background-color: #f0f0f0;
 }
 
-.vv-room-item .title{
+.vv-room-item .title {
   color: #333;
 }
-.vv-room-item .title-sub{
+
+.vv-room-item .title-sub {
   color: #666;
 }
 
 .vv-room-item.is-active .title,
-.vv-room-item.is-active .title-sub
- {
+.vv-room-item.is-active .title-sub {
   color: #6560ff;
 }
 
@@ -47,10 +52,12 @@
 .chat-body {
   padding: 10px;
 }
+
 .chat-item {
   display: flex;
   margin-bottom: 10px;
 }
+
 .chat-head {
   flex-grow: 0;
   flex-shrink: 0;
@@ -61,6 +68,7 @@
   border-radius: 100%;
   overflow: hidden;
 }
+
 .chat-head-inner {
   width: 100%;
   height: 100%;
@@ -78,6 +86,7 @@
 .chat-item.is-right .chat-head-inner {
   background: #f0a70a;
 }
+
 .chat-content {
   background: #fff;
   border-radius: 4px;
@@ -102,22 +111,26 @@
   margin-left: 80px;
   margin-right: 20px;
 }
+
 .chat-time {
   margin-top: 5px;
   margin-left: 20px;
   color: #ddd;
   font-size: 12px;
 }
+
 .chat-name {
   font-size: 12px;
   color: #fff;
 }
+
 .chat-name-detail {
   margin-bottom: 5px;
   margin-left: 20px;
   color: #ddd;
   font-size: 12px;
 }
+
 .chat-item.is-right .chat-name-detail {
   margin-right: 20px;
   text-align: right;
@@ -150,11 +163,13 @@
   border-color: #fff transparent transparent #fff;
   /*透明 灰 透明 透明 */
 }
+
 .chat-more {
   text-align: center;
   padding: 10px 0;
 }
-.chat-more > span {
+
+.chat-more>span {
   color: #6560ff;
   cursor: pointer;
 }
@@ -168,14 +183,16 @@
   width: 100%;
   padding: 10px;
 }
+
 .chat-send__input {
   flex: 1;
   padding: 0 10px;
 }
+
 .upload {
   display: inline-block;
 }
 
-.upload > input[type="file"] {
+.upload>input[type="file"] {
   display: none;
 }

@@ -1,3 +1,10 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-04-29 11:15:44
+ * @LastEditTime: 2019-09-04 20:11:31
+ * @LastEditors: Please set LastEditors
+ -->
 
 <script>
 import "./index.css";
@@ -8,12 +15,10 @@ import { getChatHistoryKfAndCd, getMemberChat } from "@/service/custom";
 import { uploadImage } from "@/service/common";
 import { memberManage } from "@/service/getData";
 
+import { stringer } from "store-es";
+
 var Stomp = require("stompjs");
 var SockJS = require("sockjs-client");
-
-//import userList from "./userList.js";
-//import chatList from "./chatList.js";
-
 export default {
   name: "member-chat",
   data() {
@@ -133,7 +138,7 @@ export default {
       getMemberChat()
         .then(res => {
           this.member.list = res;
-          if(this.member.list.length > 0){
+          if (this.member.list.length > 0) {
             this.member.activeIndex = 0;
             this.getChatHistory();
           }
@@ -251,7 +256,7 @@ export default {
           console.log("get-chat-message");
           console.log(message);
 
-          if( message.uidType != 7 )   return 
+          if (message.uidType != 7) return;
 
           let memberItem = this.getCurMemberAcitve();
           // 判断是否是最近用户
@@ -311,108 +316,52 @@ export default {
      * 发送文本信息
      */
     sendMessage() {
-      let valid = [
-        {
-          value: this.chat.connected,
-          rules: [
-            {
-              message: "当前聊天室连接未成功，请重试！",
-              rule: function(value, rules, regexs) {
-                return !!value;
-              }
-            }
-          ]
-        },
-        {
-          value: this.member.activeIndex,
-          rules: [
-            {
-              message: "当前没有选择会员！",
-              rule: function(value, rules, regexs) {
-                return value != null;
-              }
-            }
-          ]
-        },
-        {
-          value: this.chat.message,
-          rules: [
-            {
-              message: "聊天内容不能为空！",
-              rule: function(value, rules, regexs) {
-                return !rules.isFalsy(value);
-              }
-            },
-            {
-              message: "聊天内容不能全部为空字符串！",
-              rule: function(value, rules, regexs) {
-                return !regexs.empty.test(value);
-              }
-            },
-            {
-              message: "聊天内容长度不能超过150",
-              rule: function(value, rules, regexs) {
-                return value.length < 151;
-              }
-            }
-          ]
-        }
-      ];
-      let message = this.$validators.validator(valid);
-      if (message === true) {
-        this.sendSocketMessage({ content: this.chat.message, type: 0 });
-        this.chat.message = "";
-      } else {
-        this.$Message.error(message);
+      if (!this.chat.connected) {
+        this.$Message.error("当前聊天室连接未成功，请重试！");
+        return;
       }
+      if (this.member.activeIndex === -1) {
+        this.$Message.error("当前没有选择会员！");
+        return;
+      }
+      if (this.chat.message === "") {
+        this.$Message.error("聊天内容不能为空！");
+        return;
+      }
+
+      if (stringer.check.space.whole(this.chat.message)) {
+        this.$Message.error("聊天内容不能全部为空字符串！");
+        return;
+      }
+
+      if (this.chat.message.length > 150) {
+        this.$Message.error("聊天内容长度不能超过150");
+        return;
+      }
+
+      this.sendSocketMessage({ content: this.chat.message, type: 0 });
+      this.chat.message = "";
     },
 
     /**
      * 发送图片信息
      */
     sendPic() {
-      let valid = [
-        {
-          value: this.chat.connected,
-          rules: [
-            {
-              message: "当前聊天室连接未成功，请重试！",
-              rule: function(value, rules, regexs) {
-                return !!value;
-              }
-            }
-          ]
-        },
-        {
-          value: this.member.activeIndex,
-          rules: [
-            {
-              message: "当前没有选择会员！",
-              rule: function(value, rules, regexs) {
-                return value != null;
-              }
-            }
-          ]
-        },
-        {
-          value: this.chat.pic,
-          rules: [
-            {
-              message: "发送失败，请重新尝试！",
-              rule: function(value, rules, regexs) {
-                return !!value;
-              }
-            }
-          ]
-        }
-      ];
-      let message = this.$validators.validator(valid);
-      if (message === true) {
-        this.sendSocketMessage({ content: this.chat.pic, type: 1 });
-        this.chat.pic = "";
-      } else {
-        this.$Message.error(message);
+      if (!this.chat.connected) {
+        this.$Message.error("当前聊天室连接未成功，请重试！");
+        return;
       }
+      if (this.member.activeIndex === -1) {
+        this.$Message.error("当前没有选择会员！");
+        return;
+      }
+      if (this.chat.pic === "") {
+        this.$Message.error("图片发送失败，请重新尝试！");
+        return;
+      }
+
+      this.sendSocketMessage({ content: this.chat.pic, type: 1 });
+      this.chat.pic = "";
     },
     /**
      * 让滚动条始终在底部
@@ -503,180 +452,142 @@ export default {
 
 <template>
   <div class="vv-chat">
-    <Modal v-model='chat.picture.show'>
-      <div
-        class=""
-        style="text-align:center"
-      >
-        <img
-          :src="chat.picture.url"
-          alt=""
-        >
+    <Modal v-model="chat.picture.show">
+      <div class="" style="text-align:center">
+        <img :src="chat.picture.url" alt="" />
       </div>
       <div slot="footer"></div>
     </Modal>
 
     <Card>
-      <p slot='title'>
+      <p slot="title">
         会员交流
-        <Button
-          type="primary"
-          size="small"
-          @click="init"
-        >
+        <Button type="primary" size="small" @click="init">
           <Icon type="refresh"></Icon> 刷新
         </Button>
       </p>
 
       <div class="vv-chat--body">
         <div
-          v-css.padding|top:50px
-          v-css.position|position:relative
-          v-css.size|width:250px
-          v-css.border-right|color:#e3e8ee
+          style="border-right:1px solid #e3e8ee;width:280px;position:relative;padding-top:50px"
         >
-          <div
-            v-css.size|width:100%|height:50px
-            v-css.position|position:absolute|top:0|left:0
-            v-css.flex
-            v-css.padding|ab:10px
-          >
-            <div
-              v-css.margin|right:10px
-              v-css.flex-item|flex:1>
-              <Poptip
-                trigger="hover"
-                content="请输入用户名、邮箱、手机号、姓名搜索"
-                placement="bottom-start"
-              >
-                <Input
-                  placeholder="请输入用户名、邮箱、手机号、姓名搜索"
-                  v-model="user.query"
-                  @keyup.enter.native="getUserList(false)"
+          <div class="vui-relative--top   vui-grid" style="height:50px">
+            <div class="vui-grid-child vui-flex-grow--1 ">
+              <div class="vui-padding-right">
+                <Poptip
+                  trigger="hover"
+                  content="请输入用户名、邮箱、手机号、姓名搜索"
+                  placement="bottom-start"
                 >
-                </Input>
-              </Poptip>
+                  <Input
+                    placeholder="请输入用户名、邮箱、手机号、姓名搜索"
+                    v-model="user.query"
+                    @keyup.enter.native="getUserList(false)"
+                  >
+                  </Input>
+                </Poptip>
+              </div>
             </div>
-            <div>
-              <i-button
-                type='primary'
-                @click="getUserList(false)"
-              >搜索</i-button>
+            <div class="vui-grid-child vui-flex-grow--0 vui-padding-right">
+              <i-button type="primary" @click="getUserList(false)"
+                >搜索</i-button
+              >
             </div>
-
           </div>
 
-          <div
-            v-css.size|height:100%
-            v-css.layout|overflow:auto
-          >
+          <div class="vui-contain--vertical vui-overflow--auto">
             <div
-              v-for="(item,index) in user.list"
-              :key=index
-              v-css.padding|all:10px
-              v-css.more|cursor
-              v-css.border-bottom|color:#fafafa
-              class="vv-user-item"
-              @click='changeUser(item,index)'
+              v-for="(item, index) in user.list"
+              :key="index"
+              class="vv-user-item "
+              @click="changeUser(item, index)"
             >
-              <p v-css.margin|bm:5px>{{ item['username']}}</p>
-              <div v-css.flex|justify:space-between>
-                <span v-css.text|size:12px|color:#666>{{ item['realName']}}</span>
-                <span v-css.text|size:12px|color:#999>{{ item['mobilePhone'] }}</span>
+              <p class="vui-margin-bottom--small vui-text--bold">
+                {{ item["username"] }}
+              </p>
+              <div class="vui-grid vui-justify-content--space-between">
+                <span class="vui-text--light  vui-text--smaller">{{
+                  item["realName"]
+                }}</span>
+                <span class="vui-text--gray vui-text--smaller">{{
+                  item["mobilePhone"]
+                }}</span>
               </div>
             </div>
             <div
-              v-css.text|align:center|line-height:2
+              class="vui-text-align--center vui-line-height--large"
               @click="getUserList(true)"
-              v-if='!user.push.finished'
+              v-if="!user.push.finished"
             >
-              <span
-                v-css.text|color:#6560ff
-                v-css.more|cursor
-              >加载更多</span>
+              <span class="vui-text--primary vui-cursor--pointer"
+                >加载更多</span
+              >
             </div>
           </div>
         </div>
 
-        <div v-css.size|width:300px>
-          <div
-            v-css.size|height:100%
-            v-css.layout|overflow:auto
-          >
+        <div style="width:300px">
+          <div class="vui-contain--vertical vui-overflow--auto">
             <div
-              v-css.more|cursor
-              v-css.padding|ud:10px|ab:20px
-              v-css.border-bottom|color:#fafafa
-              v-for="(item,index) in member.list"
-              :key=index
-              class='vv-room-item '
-              :class="{'is-active':index== member.activeIndex }"
-              @click='changeMember(item,index)'
+              v-for="(item, index) in member.list"
+              :key="index"
+              class="vv-room-item "
+              :class="{ 'is-active': index == member.activeIndex }"
+              @click="changeMember(item, index)"
             >
               <div
-                v-css.flex|justify:space-between
-                v-css.margin|bm:5px
+                class="vui-grid vui-justify-content--space-between vui-margin-bottom"
               >
-                <p class="title">{{ item['cdName']}}</p>
-                <template v-if="item['unReadCnt'] !== 0 ">
-                  <mui-tag :label="item['unReadCnt']"></mui-tag>
+                <p class="title vui-text--bold">{{ item["cdName"] }}</p>
+                <template v-if="item['unReadCnt'] !== 0">
+                  <div class="vui-tag">
+                    <div class="vui-tag--label">{{ item["unReadCnt"] }}</div>
+                  </div>
                 </template>
               </div>
-              <div v-css.flex|justify:space-between>
-                <p
-                  v-css.text|size:12px
-                  class='title-sub'
-                >{{ item['mobilePhone']}}</p>
-                <p
-                  v-css.text|size:12px
-                  class='title-sub'
-                >{{ item['createTime']}}</p>
+              <div class="vui-grid vui-justify-content--space-between">
+                <p class="vui-text--smaller title-sub">
+                  {{ item["mobilePhone"] }}
+                </p>
+                <p class="vui-text--smaller title-sub">
+                  {{ item["createTime"] }}
+                </p>
               </div>
             </div>
-
           </div>
         </div>
 
         <div class="vv-chat--chat">
-          <div
-            class="chat"
-            ref='chat'
-          >
-            <div class='chat-body'>
-              <div
-                class="chat-more"
-                v-if='!chat.push.finished'
-              >
-                <span @click='getChatHistory(true)'>加载更多</span>
+          <div class="chat" ref="chat">
+            <div class="chat-body">
+              <div class="chat-more" v-if="!chat.push.finished">
+                <span @click="getChatHistory(true)">加载更多</span>
               </div>
               <div
                 class="chat-item"
-                v-for="(item,i) in chat.list"
-                :key='i'
-                :class="{'is-left':!isMine(item),'is-right': isMine(item) }"
+                v-for="(item, i) in chat.list"
+                :key="i"
+                :class="{ 'is-left': !isMine(item), 'is-right': isMine(item) }"
               >
-
-                <template v-if='!isMine(item)'>
+                <template v-if="!isMine(item)">
                   <div class="chat-head">
                     <div class="chat-head-inner vc-flex--center">
-
-                      <span class="chat-name">{{ item['nameFrom'] ? item['nameFrom'].split('')[0] : '' }}</span>
+                      <span class="chat-name">{{
+                        item["nameFrom"] ? item["nameFrom"].split("")[0] : ""
+                      }}</span>
                       <!-- {{ item['nameFrom'] ? item['nameFrom'].split('')[0] : '' }} -->
                     </div>
                   </div>
 
                   <div>
-
                     <div class="chat-name-detail">
-
-                      <span>{{ item['nameFrom'] }}</span>
-
+                      <span>{{ item["nameFrom"] }}</span>
                     </div>
 
                     <div class="chat-content">
                       <div>
                         <div v-if="item['type'] === 0">
-                          <span class="chat-info">{{item['content']}}</span>
+                          <span class="chat-info">{{ item["content"] }}</span>
                         </div>
                         <div
                           v-if="item['type'] === 1"
@@ -686,37 +597,27 @@ export default {
                             :src="item['content']"
                             alt=""
                             style="max-width:200px;max-height:200px"
-                          >
+                          />
                         </div>
-
                       </div>
                       <i class="chat-point"></i>
                     </div>
-                    <div
-                      class='chat-time'
-                      v-if="item['sendTimeStr']"
-                    >
-                      {{ item['sendTimeStr'] }}
-
+                    <div class="chat-time" v-if="item['sendTimeStr']">
+                      {{ item["sendTimeStr"] }}
                     </div>
                   </div>
-
                 </template>
 
-                <template v-if='isMine(item)'>
-                  <div style='margin-top:20px'>
-
-                    <div
-                      class="chat-name-detail"
-                      v-if=true
-                    >
-                      {{ item['nameFrom'] }}
+                <template v-if="isMine(item)">
+                  <div style="margin-top:20px">
+                    <div class="chat-name-detail" v-if="true">
+                      {{ item["nameFrom"] }}
                     </div>
 
                     <div class="chat-content">
                       <div>
                         <div v-if="item['type'] === 0">
-                          <span class="chat-info">{{item['content']}}</span>
+                          <span class="chat-info">{{ item["content"] }}</span>
                         </div>
                         <div
                           v-if="item['type'] === 1"
@@ -726,18 +627,13 @@ export default {
                             :src="item['content']"
                             alt=""
                             style="max-width:200px;max-height:200px"
-                          >
+                          />
                         </div>
-
                       </div>
                       <i class="chat-point"></i>
                     </div>
-                    <div
-                      class='chat-time'
-                      v-if="item['sendTimeStr']"
-                    >
-                      {{ item['sendTimeStr'] }}
-
+                    <div class="chat-time" v-if="item['sendTimeStr']">
+                      {{ item["sendTimeStr"] }}
                     </div>
                   </div>
                   <div class="chat-head">
@@ -747,42 +643,25 @@ export default {
                     </div>
                   </div>
                 </template>
-
               </div>
-
             </div>
-
           </div>
           <div class="chat-send">
-
-            <label
-              for="file"
-              class="upload"
-            >
-              <Icon
-                type="image"
-                size='36'
-              ></Icon>
-              <input
-                type="file"
-                id='file'
-                @change='selectPic'
-              >
+            <label for="file" class="upload">
+              <Icon type="image" size="36"></Icon>
+              <input type="file" id="file" @change="selectPic" />
             </label>
 
-            <div class='chat-send__input'>
+            <div class="chat-send__input">
               <Input
-                v-model='chat.message'
-                size='large'
+                v-model="chat.message"
+                size="large"
                 @keyup.enter.native="sendMessage"
                 placeholder="输入聊天内容 按回车键可发送"
               ></Input>
             </div>
 
-            <Button
-              type='primary'
-              @click='sendMessage'
-            >发送</Button>
+            <Button type="primary" @click="sendMessage">发送</Button>
           </div>
         </div>
       </div>

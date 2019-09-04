@@ -1,10 +1,27 @@
-
 .vv-custom--body {
   height: calc(100vh - 210px);
   display: flex;
   padding-top: 50px;
   position: relative;
 }
+
+.vv-custom--header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 50px;
+  display: flex;
+  align-items: center
+}
+
+.vv-custom--header .vv-custom--info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
 .vv-custom--nav,
 .vv-custom--info {
   flex: none;
@@ -12,18 +29,21 @@
   height: 100%;
   overflow-y: auto;
 }
+
 .vv-custom--nav {
   border-right: 1px solid #e3e8ee;
 }
+
 .vv-custom--nav-item,
 .vv-custom--role-item {
   padding: 15px 20px;
   width: 100%;
   cursor: pointer;
   transition: background-color 0.3s linear;
-  
+
 }
-.vv-custom--nav-item{
+
+.vv-custom--nav-item {
   padding: 20px;
 }
 
@@ -36,13 +56,14 @@
   background-color: #f1f1f1;
   border-left: 2px solid #6560ff;
 }
+
 .vv-custom--nav-item.is-active p {
   color: #6560ff;
 }
 
-.vv-custom--role{
+.vv-custom--role {
   border-bottom: 1px solid #e3e8ee
-} 
+}
 
 .vv-custom--info-item {
   padding: 15px 10px;
@@ -74,10 +95,12 @@
 .chat-body {
   padding: 10px;
 }
+
 .chat-item {
   display: flex;
   margin-bottom: 10px;
 }
+
 .chat-head {
   flex-grow: 0;
   flex-shrink: 0;
@@ -88,6 +111,7 @@
   border-radius: 100%;
   overflow: hidden;
 }
+
 .chat-head-inner {
   width: 100%;
   height: 100%;
@@ -105,6 +129,7 @@
 .chat-item.is-right .chat-head-inner {
   background: #f0a70a;
 }
+
 .chat-content {
   background: #fff;
   border-radius: 4px;
@@ -129,22 +154,26 @@
   margin-left: 80px;
   margin-right: 20px;
 }
+
 .chat-time {
   margin-top: 5px;
   margin-left: 20px;
   color: #ddd;
   font-size: 12px;
 }
+
 .chat-name {
   font-size: 12px;
   color: #fff;
 }
+
 .chat-name-detail {
   margin-bottom: 5px;
   margin-left: 20px;
   color: #ddd;
   font-size: 12px;
 }
+
 .chat-item.is-right .chat-name-detail {
   margin-right: 20px;
   text-align: right;
@@ -177,11 +206,13 @@
   border-color: #fff transparent transparent #fff;
   /*透明 灰 透明 透明 */
 }
+
 .chat-more {
   text-align: center;
   padding: 10px 0;
 }
-.chat-more > span {
+
+.chat-more>span {
   color: #6560ff;
   cursor: pointer;
 }
@@ -195,14 +226,16 @@
   width: 100%;
   padding: 10px;
 }
+
 .chat-send__input {
   flex: 1;
   padding: 0 10px;
 }
+
 .upload {
   display: inline-block;
 }
 
-.upload > input[type="file"] {
+.upload>input[type="file"] {
   display: none;
 }
