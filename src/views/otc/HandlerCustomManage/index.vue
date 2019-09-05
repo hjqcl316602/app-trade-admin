@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-04-15 14:23:57
- * @LastEditTime: 2019-09-04 20:10:03
+ * @LastEditTime: 2019-09-05 16:49:15
  * @LastEditors: Please set LastEditors
  -->
 
@@ -826,6 +826,18 @@ export default {
             </p>
             <p style="text-indent:20px ;font-size:12px;">
               申诉：{{ getOrderStatus(detail["khStatus"]) }}
+            </p>
+          </div>
+          <div
+            class="vv-custom--info-item"
+            v-if="detail['transferNumber'] || detail['transferTime']"
+          >
+            <p>转账</p>
+            <p style="text-indent:20px ;font-size:12px;">
+              金额：{{ detail["transferNumber"] }}
+            </p>
+            <p style="text-indent:20px ;font-size:12px;">
+              时间：{{ detail["transferTime"] }}
             </p>
           </div>
 

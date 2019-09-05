@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-01-22 18:05:47
- * @LastEditTime: 2019-08-20 17:33:30
+ * @LastEditTime: 2019-09-05 17:07:54
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -24,7 +24,15 @@
 				</div> -->
 
 				<div class="searchWrapper clearfix">
-
+          <div class="poptip">
+						<Poptip trigger="hover" 
+										content="请输入渠道用户编号搜索" 
+										placement="bottom-start">
+							<Input placeholder="请输入渠道用户编号搜索" 
+										v-model="filterSearch.subMemId"/> 
+							</Input>      
+						</Poptip>
+					</div>		
 					<div class="poptip">
 						<Poptip trigger="hover" 
 										content="请输入渠道订单号搜索" 
@@ -163,8 +171,9 @@
 			<Modal v-model="showModal" :width="500" class="modelInfo">
 					<h3 slot="header">订单信息</h3>
 						<ul>
+              <li><span>订单编号：</span>{{ modelInner.orderSn }}</li>
 							<li><span>渠道订单号：</span>{{ modelInner.channelOrderId }}</li>
-							<li><span>订单编号：</span>{{ modelInner.orderSn }}</li>
+              <li><span>渠道用户编号：</span>{{ modelInner.subMemId }}</li> 
 							<li><span>交易时间：</span>{{ modelInner.createTime }}</li>
 							<li><span>交易人：</span>{{ modelInner.customerName }}</li>
 							<li><span>创建人：</span>{{ modelInner.memberName }}</li>
@@ -229,7 +238,8 @@ export default {
         maxMoney: "",
         minNumber: "",
         maxNumber: "",
-        advertiseType: ""
+        advertiseType: "",
+        subMemId: ""
       },
       modelInner: {},
       cbData: {},
@@ -240,14 +250,21 @@ export default {
       saveLoading: false,
       columnsList: [
         {
-          title: "渠道订单号",
-          width: 180,
-          key: "channelOrderId"
-        },
-        {
           title: "订单编号",
           width: 160,
           key: "orderSn"
+        },
+        {
+          title: "渠道订单号（渠道用户编号）",
+          key: "channelOrderId",
+          width: 200,
+          render(h, params) {
+            let { subMemId, channelOrderId } = params.row;
+            return h("p", [
+              h("p", channelOrderId),
+              h("p", subMemId ? "(" + subMemId + ")" : "")
+            ]);
+          }
         },
         {
           title: "交易时间",
