@@ -1,3 +1,10 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-01-22 18:05:47
+ * @LastEditTime: 2019-09-05 09:47:49
+ * @LastEditors: Please set LastEditors
+ -->
 <template>
   <div class="memberDetail">
     <Row class="firstLine">
@@ -84,7 +91,7 @@
 						<div class="poptip">
 							<span>交易类型：</span>
 							<Select v-model="filterSearch.type">
-								<Option v-for="(item, index) in typeArr" :key="item" :value="index==12?' ':index"> 
+								<Option v-for="(item, index) in typeArr" :key="item" :value="index==13?' ':index"> 
 									{{ item }}
 								</Option>	
 							</Select>
@@ -166,6 +173,7 @@ export default {
 				"投票",
 				"人工充值",
         "配对",
+        "佣金奖励",
         "全部"
 			],
 			memberInfo: {},
