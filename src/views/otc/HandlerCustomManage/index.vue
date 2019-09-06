@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-04-15 14:23:57
- * @LastEditTime: 2019-09-05 16:49:15
+ * @LastEditTime: 2019-09-06 10:15:01
  * @LastEditors: Please set LastEditors
  -->
 
@@ -571,6 +571,10 @@ export default {
               `切换工作状态为${this.getWorkStatus(this.work.status)}成功！`
             );
             this.work.status = this.work.status === 1 ? 0 : 1;
+            console.log(this.work.status);
+            if(this.work.status === 1 ){
+              this.getWorkBench();
+            }
           })
           .catch(err => {
             this.$Message.error(
@@ -789,7 +793,10 @@ export default {
               <div class="vui-grid vui-justify-content--space-between">
                 <p>{{ item["label"] }}</p>
                 <template v-if="item['cnt'] !== 0">
-                  <mui-tag :label="item['cnt']"></mui-tag>
+                  <!-- <mui-tag :label="item['cnt']"></mui-tag> -->
+                  <div class="vui-tag">
+                    <div class="vui-tag--label">{{ item["cnt"] }}</div>
+                  </div>
                 </template>
               </div>
               <p style="text-indent:20px ;font-size:12px;">
