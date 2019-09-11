@@ -1,6 +1,6 @@
-<script> 
-import { getAppealDetail } from "@/service/custom"; 
- 
+<script>
+import { getAppealDetail } from "@/service/custom";
+
 export default {
   name: "",
   data() {
@@ -10,8 +10,8 @@ export default {
         appId: "",
         orderId: "",
         orderSn: ""
-      }, 
-      detail: {}, 
+      },
+      detail: {},
     };
   },
   mounted() {
@@ -23,7 +23,7 @@ export default {
      */
     init() {
       this.getBasisMessage();
-      this.getAppealDetail(); 
+      this.getAppealDetail();
     },
     /**
      * 获取基础信息
@@ -44,20 +44,20 @@ export default {
         getAppealDetail({
           orderId: this.basis["orderId"]
         })
-          .then(res => { 
+          .then(res => {
             this.detail = res;
           })
           .catch(e => {
             this.$Message.error("获取申诉订单详情失败！");
           });
       });
-    }, 
+    },
   }
 };
 </script>
 
 <template>
-  <div class=""> 
+  <div class="">
 
     <Card>
       <p slot="title">
@@ -67,6 +67,14 @@ export default {
           <div class="list-item">
             <span class="list-title">订单号: </span>
             <span class="list-value">{{ detail['orderSn']}}</span>
+          </div>
+          <div class="list-item">
+              <span class="list-title">渠道订单号: </span>
+              <span class="list-value">{{ detail['channelOrderId']}}</span>
+          </div>
+          <div class="list-item">
+              <span class="list-title">渠道用户编号: </span>
+              <span class="list-value">{{ detail['subMemId']}}</span>
           </div>
 
           <div class="list-item">
@@ -88,10 +96,7 @@ export default {
             <span class="list-title">申诉者（用户）: </span>
             <span class="list-value">
               <span>
-                {{ detail['subDealName'] }}
-              </span>
-              <span v-if="detail['subMobile']">
-                （{{ detail['subMobile']}}）
+                {{ detail['subDealName'] || detail['subMobile'] || detail['subMemId']}}
               </span>
             </span>
           </div>
@@ -99,11 +104,11 @@ export default {
             <span class="list-title">承兑商（广告主）: </span>
             <span class="list-value">
               <span>
-                {{ detail['memberName'] }}
+                {{ detail['memberName']  }}
               </span>
-              <span v-if="detail['memberMobile']">
-                （{{ detail['memberMobile']}}）
-              </span>
+                <span v-if="detail['memberMobile']">
+                    ({{ detail['memberMobile'] }})
+                </span>
             </span>
           </div>
           <div class="list-item">
@@ -129,19 +134,18 @@ export default {
   </div>
 </template>
 
-<style   scoped> 
+<style   scoped>
 .list{
-  display: flex;
-  flex-wrap: wrap;
 }
 .list-item{
-  flex: none;
-  width:25%;
   padding: 10px 0 ;
-  display: flex;  
+  display: flex;
 }
-.list-title{ 
+.list-title{
+    flex-basis: 200px;
+    text-align: right;
   font-size: 15px;
+    padding-right: 10px;
   color: #adabab
 }
 .list-value{

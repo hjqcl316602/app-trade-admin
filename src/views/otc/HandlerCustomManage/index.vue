@@ -804,7 +804,12 @@ export default {
               </p>
             </div>
           </div>
-
+          <div class="vv-custom--info-item">
+            <p>渠道订单号</p>
+            <p style="text-indent:20px ;font-size:12px;">
+               {{ detail["channelOrderId"] }}
+            </p>
+          </div>
           <div class="vv-custom--info-item">
             <p>交易方式</p>
             <p style="text-indent:20px ;font-size:12px;">
