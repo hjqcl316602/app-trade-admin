@@ -11,7 +11,7 @@ export default {
         orderId: "",
         orderSn: ""
       },
-      detail: {},
+      detail: {}
     };
   },
   mounted() {
@@ -51,104 +51,111 @@ export default {
             this.$Message.error("获取申诉订单详情失败！");
           });
       });
-    },
+    }
   }
 };
 </script>
 
 <template>
   <div class="">
-
     <Card>
-      <p slot="title">
-        申诉详情
-      </p>
+      <p slot="title">申诉详情</p>
       <div class="list">
-          <div class="list-item">
-            <span class="list-title">订单号: </span>
-            <span class="list-value">{{ detail['orderSn']}}</span>
-          </div>
-          <div class="list-item">
-              <span class="list-title">渠道订单号: </span>
-              <span class="list-value">{{ detail['channelOrderId']}}</span>
-          </div>
-          <div class="list-item">
-              <span class="list-title">渠道用户编号: </span>
-              <span class="list-value">{{ detail['subMemId']}}</span>
-          </div>
-
-          <div class="list-item">
-            <span class="list-title">交易类型: </span>
-            <span class="list-value">{{　detail.advertiseType === 1 ? "充值" : "提现"　}}</span>
-          </div>
-
-          <div class="list-item">
-            <span class="list-title">支付方式: </span>
-            <span class="list-value">{{ detail['payMode']}}</span>
-          </div>
-
-          <div class="list-item">
-            <span class="list-title">交易金额: </span>
-            <span class="list-value">{{ detail['money']}}</span>
-          </div>
-
-          <div class="list-item">
-            <span class="list-title">申诉者（用户）: </span>
-            <span class="list-value">
-              <span>
-                {{ detail['subDealName'] || detail['subMobile'] || detail['subMemId']}}
-              </span>
-            </span>
-          </div>
-          <div class="list-item">
-            <span class="list-title">承兑商（广告主）: </span>
-            <span class="list-value">
-              <span>
-                {{ detail['memberName']  }}
-              </span>
-                <span v-if="detail['memberMobile']">
-                    ({{ detail['memberMobile'] }})
-                </span>
-            </span>
-          </div>
-          <div class="list-item">
-            <span class="list-title">承兑商（交易对象）:  </span>
-            <span class="list-value">
-              <span>
-                {{ detail['customerName'] }}
-              </span>
-              <span v-if="detail['customerMobile']">
-                （{{ detail['customerMobile']}}）
-              </span>
-            </span>
-          </div>
-
-          <div class="list-item">
-            <span class="list-title">申诉时间: </span>
-            <span class="list-value">{{ detail['appealTime']}}</span>
-          </div>
-
+        <div class="list-item">
+          <span class="list-title">订单号: </span>
+          <span class="list-value">{{ detail["orderSn"] }}</span>
+        </div>
+        <div class="list-item">
+          <span class="list-title">渠道订单号: </span>
+          <span class="list-value">{{ detail["channelOrderId"] }}</span>
+        </div>
+        <div class="list-item">
+          <span class="list-title">渠道用户编号: </span>
+          <span class="list-value">{{ detail["subMemId"] }}</span>
         </div>
 
+        <div class="list-item">
+          <span class="list-title">交易类型: </span>
+          <span class="list-value">{{
+            detail.advertiseType === 1 ? "充值" : "提现"
+          }}</span>
+        </div>
+
+        <div class="list-item">
+          <span class="list-title">支付方式: </span>
+          <span class="list-value">{{ detail["payMode"] }}</span>
+        </div>
+
+        <div class="list-item">
+          <span class="list-title">交易金额: </span>
+          <span class="list-value">{{ detail["money"] }}</span>
+        </div>
+
+        <div class="list-item">
+          <span class="list-title">申诉者（用户）: </span>
+          <span class="list-value">
+            <span>
+              {{
+                detail["subDealName"] ||
+                  detail["subMobile"] ||
+                  detail["subMemId"]
+              }}
+            </span>
+          </span>
+        </div>
+        <div class="list-item">
+          <span class="list-title">承兑商（广告主）: </span>
+          <span class="list-value">
+            <span> {{ detail["memberName"] }} </span>
+            <span v-if="detail['memberMobile']">
+              ({{ detail["memberMobile"] }})
+            </span>
+          </span>
+        </div>
+        <div class="list-item">
+          <span class="list-title">承兑商（交易对象）: </span>
+          <span class="list-value">
+            <span> {{ detail["customerName"] }} </span>
+            <span v-if="detail['customerMobile']">
+              （{{ detail["customerMobile"] }}）
+            </span>
+          </span>
+        </div>
+
+        <div class="list-item" v-if="detail['transferNumber']">
+          <span class="list-title">转账金额: </span>
+          <span class="list-value">{{ detail["transferNumber"] }}</span>
+        </div>
+
+        <div class="list-item" v-if="detail['transferTime']">
+          <span class="list-title">转账时间: </span>
+          <span class="list-value">{{ detail["transferTime"] }}</span>
+        </div>
+
+        <div class="list-item">
+          <span class="list-title">申诉时间: </span>
+          <span class="list-value">{{ detail["appealTime"] }}</span>
+        </div>
+      </div>
     </Card>
   </div>
 </template>
 
-<style   scoped>
-.list{
+<style scoped>
+.list {
 }
-.list-item{
-  padding: 10px 0 ;
+.list-item {
+  padding: 10px 0;
   display: flex;
 }
-.list-title{
-    flex-basis: 200px;
-    text-align: right;
+.list-title {
+  flex-basis: 200px;
+  text-align: right;
   font-size: 15px;
-    padding-right: 10px;
-  color: #adabab
+  padding-right: 10px;
+  color: #adabab;
 }
-.list-value{
-  color:#444
+.list-value {
+  color: #444;
 }
 </style>

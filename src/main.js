@@ -5,25 +5,25 @@
  * @LastEditTime: 2019-09-04 17:51:31
  * @LastEditors: Please set LastEditors
  */
-import Vue from 'vue';
-import iView from 'iview';
-import { router, initRouter } from './router/index';
-import { appRouter } from './router/router';
-import store from './store';
-import App from './app.vue';
-import '@/locale';
+import Vue from "vue";
+import iView from "iview";
+import { router, initRouter } from "./router/index";
+import { appRouter } from "./router/router";
+import store from "./store";
+import App from "./app.vue";
+import "@/locale";
 //import 'iview/dist/styles/iview.css';
 
-import './theme/styles/iview.css';
+import "./theme/styles/iview.css";
 
-import VueI18n from 'vue-i18n';
-import util from '@/libs/util';
-import axios from 'axios';
-import qs from 'qs';
-import Api from '@/config/api';
-import Cookies from 'js-cookie';
-import Viser from 'viser-vue';
-import { setStore, getStore, removeStore } from '@/config/storage.js';
+import VueI18n from "vue-i18n";
+import util from "@/libs/util";
+import axios from "axios";
+import qs from "qs";
+import Api from "@/config/api";
+import Cookies from "js-cookie";
+import Viser from "viser-vue";
+import { setStore, getStore, removeStore } from "@/config/storage.js";
 
 // import mui from './mui/src/mui'
 // Vue.use(mui)
@@ -36,25 +36,25 @@ function toFloor(number, scale = 8) {
     //如果是"0.0000000000000000"
     return 0;
   }
-  let str = number + ''; //转字符串
-  if (str.indexOf('e') > -1 || str.indexOf('E') > -1) {
+  let str = number + ""; //转字符串
+  if (str.indexOf("e") > -1 || str.indexOf("E") > -1) {
     //科学计数法
     let num = new Number(number).toFixed(scale + 1),
-      str = num + '';
+      str = num + "";
     return str.substring(0, str.length - 1);
-  } else if (str.indexOf('.') > -1) {
+  } else if (str.indexOf(".") > -1) {
     //小数
     if (scale == 0) {
-      return str.substring(0, str.indexOf('.'));
+      return str.substring(0, str.indexOf("."));
     }
-    return str.substring(0, str.indexOf('.') + scale + 1); //截取指定位数
+    return str.substring(0, str.indexOf(".") + scale + 1); //截取指定位数
   } else {
     //整数
     return str;
   }
 }
 
-Vue.filter('toFloor', (number, scale) => {
+Vue.filter("toFloor", (number, scale) => {
   return toFloor(number, scale);
 });
 
@@ -66,13 +66,13 @@ axios.interceptors.response.use(response => {
   let url = response.config.url;
 
   if (data.code === 4000) {
-    Cookies.remove('user');
-    Cookies.remove('userPhone');
-    Cookies.remove('userInfo');
-    router.push({ name: 'login' });
+    Cookies.remove("user");
+    Cookies.remove("userPhone");
+    Cookies.remove("userInfo");
+    router.push({ name: "login" });
   }
   if (data.code === 5000) {
-    router.push({ name: 'error-403' });
+    router.push({ name: "error-403" });
   }
   return response;
 });
@@ -89,20 +89,20 @@ Vue.use(iView);
 Vue.use(Viser);
 
 new Vue({
-  el: '#app',
+  el: "#app",
   router: router,
   store: store,
   render: h => h(App),
   data: {
-    currentPageName: ''
+    currentPageName: ""
   },
   mounted() {
     this.currentPageName = this.$route.name;
     // 显示打开的页面的列表
-    this.$store.commit('setOpenedList');
-    this.$store.commit('initCachepage');
+    this.$store.commit("setOpenedList");
+    this.$store.commit("initCachepage");
     // 权限菜单过滤相关
-    this.$store.commit('updateMenulist');
+    this.$store.commit("updateMenulist");
   },
   created() {
     // 全局配置提示弹出框
@@ -118,6 +118,6 @@ new Vue({
         tagsList.push(...item.children);
       }
     });
-    this.$store.commit('setTagsList', tagsList);
+    this.$store.commit("setTagsList", tagsList);
   }
 });

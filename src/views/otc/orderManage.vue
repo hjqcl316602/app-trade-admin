@@ -25,58 +25,58 @@
 
 				<div class="searchWrapper clearfix">
           <div class="poptip">
-						<Poptip trigger="hover" 
-										content="请输入渠道用户编号搜索" 
+						<Poptip trigger="hover"
+										content="请输入渠道用户编号搜索"
 										placement="bottom-start">
-							<Input placeholder="请输入渠道用户编号搜索" 
-										v-model="filterSearch.subMemId"/> 
-							</Input>      
+							<Input placeholder="请输入渠道用户编号搜索"
+										v-model="filterSearch.subMemId"/>
+							</Input>
 						</Poptip>
-					</div>		
+					</div>
 					<div class="poptip">
-						<Poptip trigger="hover" 
-										content="请输入渠道订单号搜索" 
+						<Poptip trigger="hover"
+										content="请输入渠道订单号搜索"
 										placement="bottom-start">
-							<Input placeholder="请输入渠道订单号搜索" 
-										v-model="filterSearch.channelOrderId"/> 
-							</Input>      
+							<Input placeholder="请输入渠道订单号搜索"
+										v-model="filterSearch.channelOrderId"/>
+							</Input>
 						</Poptip>
-					</div>		
+					</div>
 					<div class="poptip">
-						<Poptip trigger="hover" 
-										content="请输入订单号搜索" 
+						<Poptip trigger="hover"
+										content="请输入订单号搜索"
 										placement="bottom-start">
-							<Input placeholder="请输入订单号搜索" 
-										v-model="filterSearch.orderSn"/> 
-							</Input>      
-						</Poptip>
-					</div>	
-
-					<div class="poptip">
-						<Poptip trigger="hover" 
-										content="请输入交易人搜索" 
-										placement="bottom-start">
-							<Input placeholder="请输入交易人搜索" 
-										v-model="filterSearch.customerName"/> 
-							</Input>      
+							<Input placeholder="请输入订单号搜索"
+										v-model="filterSearch.orderSn"/>
+							</Input>
 						</Poptip>
 					</div>
 
 					<div class="poptip">
-						<Poptip trigger="hover" 
-										content="请输入创建人搜索" 
+						<Poptip trigger="hover"
+										content="请输入交易人搜索"
 										placement="bottom-start">
-							<Input placeholder="请输入创建人搜索" 
-										v-model="filterSearch.memberName"/> 
-							</Input>      
+							<Input placeholder="请输入交易人搜索"
+										v-model="filterSearch.customerName"/>
+							</Input>
+						</Poptip>
+					</div>
+
+					<div class="poptip">
+						<Poptip trigger="hover"
+										content="请输入创建人搜索"
+										placement="bottom-start">
+							<Input placeholder="请输入创建人搜索"
+										v-model="filterSearch.memberName"/>
+							</Input>
 						</Poptip>
 					</div>
 
 					<div class="poptip">
 						<span>币种：</span>
 						<Select v-model="filterSearch.unit">
-							<Option v-for="(item, index) in coinSearchArr" 
-										:value="item.unit=='全部'?'':item.unit" 
+							<Option v-for="(item, index) in coinSearchArr"
+										:value="item.unit=='全部'?'':item.unit"
 										:key="item.unit">{{ item.unit }}</Option>
 						</Select>
 					</div>
@@ -84,64 +84,64 @@
 					<div class="poptip">
 						<span>类型：</span>
 						<Select v-model="filterSearch.advertiseType">
-							<Option v-for="item in advertiseArr" 
-										:value="item.status" 
+							<Option v-for="item in advertiseArr"
+										:value="item.status"
 										:key="item.status">{{ item.text }}</Option>
 						</Select>
 					</div>
 					<br>
 
 					<div class="poptip range">
-						<Poptip trigger="hover" 
-										content="最低订单数搜索" 
+						<Poptip trigger="hover"
+										content="最低订单数搜索"
 										placement="bottom-start">
-							<Input placeholder="最低订单数搜索" 
-										v-model="filterSearch.minNumber"/> 
-							</Input> 
+							<Input placeholder="最低订单数搜索"
+										v-model="filterSearch.minNumber"/>
+							</Input>
 						</Poptip>
 						~
-						<Poptip trigger="hover" 
-										content="最高订单数搜索" 
+						<Poptip trigger="hover"
+										content="最高订单数搜索"
 										placement="bottom-start">
-							<Input placeholder="最高订单数搜索" 
-										v-model="filterSearch.maxNumber"/> 
-							</Input> 
+							<Input placeholder="最高订单数搜索"
+										v-model="filterSearch.maxNumber"/>
+							</Input>
 						</Poptip>
 					</div>
 
 					<div class="poptip range">
-						<Poptip trigger="hover" 
-										content="最低订单金额搜索" 
+						<Poptip trigger="hover"
+										content="最低订单金额搜索"
 										placement="bottom-start">
-							<Input placeholder="最低订单金额搜索" 
-										v-model="filterSearch.minMoney"/> 
-							</Input> 
+							<Input placeholder="最低订单金额搜索"
+										v-model="filterSearch.minMoney"/>
+							</Input>
 						</Poptip>
 						~
-						<Poptip trigger="hover" 
-										content="最高订单金额搜索" 
+						<Poptip trigger="hover"
+										content="最高订单金额搜索"
 										placement="bottom-start">
-							<Input placeholder="最高订单金额搜索" 
-										v-model="filterSearch.maxMoney"/> 
-							</Input> 
+							<Input placeholder="最高订单金额搜索"
+										v-model="filterSearch.maxMoney"/>
+							</Input>
 						</Poptip>
 					</div>
 
 					<div class="poptip">
 						<span>订单状态：</span>
 						<Select v-model="filterSearch.status">
-							<Option v-for="item in orderStatusArr" 
-										:value="item.status" 
+							<Option v-for="item in orderStatusArr"
+										:value="item.status"
 										:key="item.status">{{ item.text }}</Option>
 						</Select>
 					</div>
 
 					<div class="poptip">
-						<DatePicker 
-							type="daterange" 
-							placement="bottom-end" 
+						<DatePicker
+							type="daterange"
+							placement="bottom-end"
 							@on-change="dateRange"
-							placeholder="选择时间区间"> 
+							placeholder="选择时间区间">
 						</DatePicker>
 					</div>
 
@@ -153,27 +153,27 @@
 			</Row>
 
 			<Row>
-				<Table :loading="ifloading" 
-								:columns="columnsList" 
+				<Table :loading="ifloading"
+								:columns="columnsList"
 								:data="cbData.content"
 								@on-selection-change="selectionChange"
-								@on-sort-change="definedOrder" 
+								@on-sort-change="definedOrder"
 								border></Table>
 			</Row>
 
 			<Row class="pageWrapper" >
-				<Page :total="cbData.totalElements" 
-							:current="currentPageIdx"   
-							@on-change="changePage" 
+				<Page :total="cbData.totalElements"
+							:current="currentPageIdx"
+							@on-change="changePage"
 							show-elevator></Page>
 			</Row>
-				
+
 			<Modal v-model="showModal" :width="500" class="modelInfo">
 					<h3 slot="header">订单信息</h3>
 						<ul>
               <li><span>订单编号：</span>{{ modelInner.orderSn }}</li>
 							<li><span>渠道订单号：</span>{{ modelInner.channelOrderId }}</li>
-              <li><span>渠道用户编号：</span>{{ modelInner.subMemId }}</li> 
+              <li><span>渠道用户编号：</span>{{ modelInner.subMemId }}</li>
 							<li><span>交易时间：</span>{{ modelInner.createTime }}</li>
 							<li><span>交易人：</span>{{ modelInner.customerName }}</li>
 							<li><span>创建人：</span>{{ modelInner.memberName }}</li>
@@ -187,6 +187,9 @@
 							<li><span>付款时间：</span>{{ modelInner.payTime }}</li>
 							<li><span>订单取消时间：</span>{{ !modelInner.cancelTime ? '--' : modelInner.cancelTime }}</li>
 							<li><span>放行时间：</span>{{ !modelInner.releaseTime ? '--' : modelInner.releaseTime }}</li>
+							<li><span>转账金额：</span>{{ !modelInner.transferNumber ? '--' : modelInner.transferNumber }}</li>
+							<li><span>转账时间：</span>{{ !modelInner.transferTime ? '--' : modelInner.transferTime }}</li>
+
 						</ul>
 					<div slot="footer">
 					</div>
@@ -312,8 +315,14 @@ export default {
           key: "status",
           render(h, params) {
             let status = params.row.status;
-            let arr = ["已取消", "未付款", "已付款", "已完成", "申诉中"];
-            return h("span", {}, arr[status]);
+            let message ;
+            if(params.row && params.row.transferNumber){
+                message ='已转账'
+			}else{
+                message = ["已取消", "未付款", "已付款", "已完成", "申诉中"][status];
+			}
+
+            return h("span", {}, message);
           }
         },
         {
