@@ -114,16 +114,17 @@ let findSlideArr = [
     { id: 147, path: 'dictionary', icon: 'clipboard', component: resolve => { require(['@/views/system/Dictionary.vue'], resolve) } },
     { id: 171, path: 'statistic', icon: 'clipboard', component: resolve => { require(['@/views/finance/FinanceStatistic.vue'], resolve) } },
     { id: 178, path: 'manage', icon: 'clipboard', component: resolve => { require(['@/views/bond/BondManage.vue'], resolve) } },
+    { id: 198, path: 'account', icon: 'ios-person', component: resolve => { require(['@/views/member/Account.vue'], resolve) } },
 ]
 
 export let getRouter = function () {
 
      //调用地方
-     //main.js - mounted  this.$store.commit('updateMenulist'); 
+     //main.js - mounted  this.$store.commit('updateMenulist');
      //main.vue - created this.$store.commit("updateMenulist");
 
     let sidebarArr = JSON.parse(getStore('leftSidebarList')) || [];
- 
+
 
     let userDefinedIDArr = [];
     findSlideArr.forEach(item => {

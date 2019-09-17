@@ -76,9 +76,9 @@ export default {
 
         <div class="list-item">
           <span class="list-title">交易类型: </span>
-          <span class="list-value">{{
-            detail.advertiseType === 1 ? "充值" : "提现"
-          }}</span>
+          <span class="list-value">
+            {{ detail.advertiseType === 1 ? "充值" : "提现" }}
+          </span>
         </div>
 
         <div class="list-item">

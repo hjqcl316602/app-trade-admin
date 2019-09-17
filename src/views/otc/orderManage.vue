@@ -62,7 +62,7 @@
 						</Poptip>
 					</div>
 
-					<div class="poptip">
+						<div class="poptip">
 						<Poptip trigger="hover"
 										content="请输入创建人搜索"
 										placement="bottom-start">
@@ -83,7 +83,7 @@
 
 					<div class="poptip">
 						<span>类型：</span>
-						<Select v-model="filterSearch.advertiseType">
+								<Select v-model="filterSearch.advertiseType">
 							<Option v-for="item in advertiseArr"
 										:value="item.status"
 										:key="item.status">{{ item.text }}</Option>
@@ -357,7 +357,7 @@ export default {
   },
   methods: {
     definedOrder(obj) {
-      let direction = obj.order === "desc" ? 1 : 0;
+      	let direction = obj.order === "desc" ? 1 : 0;
       let propertyIndex = this.sortSearch.property.indexOf(obj.key);
 
       if (propertyIndex !== -1) {
