@@ -68,6 +68,7 @@ export default {
 
   mounted() {
     this.init();
+    this.getClipboardImage();
   },
   methods: {
     init() {
@@ -75,6 +76,30 @@ export default {
       this.createSocket();
       this.getUserList();
       this.getMemberChat();
+    },
+    /**
+     * 时间：2019/9/18 ,
+     * 描述：获取粘贴板的图片文件
+     */
+
+    getClipboardImage() {
+      let elems = this.$refs["editable"].$el.childNodes;
+      let elem = null;
+      for (let n = 0; n < elems.length; n++) {
+        if (elems[n].localName === "input") {
+          elem = elems[n];
+          break;
+        }
+      }
+      if (elem == null) return false;
+
+      elem.onpaste = event => {
+        let value = event.clipboardData.items[0];
+        if (value.kind === "file" && value.type.indexOf("image/") !== -1) {
+          this.selectPic(value.getAsFile(), "clipboard");
+          return false;
+        }
+      };
     },
     /**
      * 获取基础信息
@@ -382,8 +407,11 @@ export default {
     /**
      * 选择图片，并发送图片消息
      */
-    selectPic: function selectPic(e) {
-      let file = e.target.files[0];
+    selectPic: function selectPic(e, type = "local") {
+      let file = e;
+      if (type === "local") {
+        file = e.target.files[0];
+      }
       let formData = new FormData();
       formData.append("file", file);
       uploadImage(formData)
@@ -656,6 +684,7 @@ export default {
               <Input
                 v-model="chat.message"
                 size="large"
+                ref="editable"
                 @keyup.enter.native="sendMessage"
                 placeholder="输入聊天内容 按回车键可发送"
               ></Input>
@@ -669,5 +698,4 @@ export default {
   </div>
 </template>
 
-<style>
-</style>
+<style></style>

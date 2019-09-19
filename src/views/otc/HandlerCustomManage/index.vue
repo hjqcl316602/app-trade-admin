@@ -81,6 +81,30 @@ export default {
       this.createSocket();
     },
     /**
+     * 时间：2019/9/18 ,
+     * 描述：获取粘贴板的图片文件
+     */
+
+    getClipboardImage() {
+      let elems = this.$refs["editable"].$el.childNodes;
+      let elem = null;
+      for (let n = 0; n < elems.length; n++) {
+        if (elems[n].localName === "input") {
+          elem = elems[n];
+          break;
+        }
+      }
+      if (elem == null) return false;
+
+      elem.onpaste = event => {
+        let value = event.clipboardData.items[0];
+        if (value.kind === "file" && value.type.indexOf("image/") !== -1) {
+          this.selectPic(value.getAsFile(), "clipboard");
+          return false;
+        }
+      };
+    },
+    /**
      * 获取基础信息
      */
     getBasisMessage() {
@@ -572,7 +596,7 @@ export default {
             );
             this.work.status = this.work.status === 1 ? 0 : 1;
             console.log(this.work.status);
-            if(this.work.status === 1 ){
+            if (this.work.status === 1) {
               this.getWorkBench();
             }
           })
@@ -588,8 +612,11 @@ export default {
     /**
      * 选择图片，并发送图片消息
      */
-    selectPic: function selectPic(e) {
-      let file = e.target.files[0];
+    selectPic: function selectPic(e, type = "local") {
+      let file = e;
+      if (type === "local") {
+        file = e.target.files[0];
+      }
       let formData = new FormData();
       formData.append("file", file);
       uploadImage(formData)
@@ -690,6 +717,17 @@ export default {
   },
   beforeDestroy() {
     this.closeSocket();
+  },
+  watch: {
+    "order.list": {
+      handler(val) {
+        setTimeout(() => {
+          this.getClipboardImage();
+        }, 100);
+      },
+      deep: true,
+      immediate: true
+    }
   }
 };
 </script>
@@ -807,7 +845,7 @@ export default {
           <div class="vv-custom--info-item">
             <p>渠道订单号</p>
             <p style="text-indent:20px ;font-size:12px;">
-               {{ detail["channelOrderId"] }}
+              {{ detail["channelOrderId"] }}
             </p>
           </div>
           <div class="vv-custom--info-item">
@@ -978,6 +1016,7 @@ export default {
               <Input
                 v-model="chat.message"
                 size="large"
+                ref="editable"
                 @keyup.enter.native="sendMessage"
                 placeholder="输入聊天内容 按回车键可发送"
               >
@@ -991,5 +1030,4 @@ export default {
   </div>
 </template>
 
-<style>
-</style>
+<style></style>

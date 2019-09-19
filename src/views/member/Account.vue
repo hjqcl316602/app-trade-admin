@@ -38,7 +38,7 @@ export default {
           title: "收款方式",
           render(h, params) {
             let type = params.row.type || 0;
-            let message = ["银行卡", "微信", "支付宝", "云闪付"][type - 1];
+            let message = ["银行卡", "微信", "支付宝", "云闪付","聚合码"][type - 1];
             return h("span", message);
           }
         },
@@ -67,7 +67,7 @@ export default {
           render(h, params) {
             let type = params.row.type || 0;
             let message = "";
-            if (type == 2 || type == 4) {
+            if (type == 2 || type == 4 || type==5) {
               message = params.row.payInfoname;
             } else {
               message =

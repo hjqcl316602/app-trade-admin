@@ -322,7 +322,11 @@ export default {
                 message = ["已取消", "未付款", "已付款", "已完成", "申诉中"][status];
 			}
 
-            return h("span", {}, message);
+			let style = {}
+			if(status == 3){
+                style['color'] = 'red'
+			}
+            return h("span", { style }, message);
           }
         },
         {
