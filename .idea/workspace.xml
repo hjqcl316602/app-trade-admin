@@ -3,12 +3,66 @@
   <component name="ChangeListManager">
     <list default="true" id="d78a6022-d4b2-4e11-8204-4f31d1b36fcd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/member/Account.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/member/Account.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/member/Authenticate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/member/Authenticate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/rewrite.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/rewrite.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/member/chat/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/member/chat/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/otc/orderManage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/otc/orderManage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/0.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/1.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/10.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/11.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/12.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/13.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/14.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/15.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/16.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/17.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/18.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/19.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/2.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/20.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/21.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/22.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/23.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/24.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/25.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/26.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/27.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/28.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/29.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/3.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/30.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/31.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/32.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/33.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/34.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/35.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/36.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/37.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/38.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/39.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/4.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/40.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/41.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/42.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/43.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/44.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/45.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/46.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/47.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/48.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/49.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/5.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/50.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/51.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/6.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/7.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/8.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/9.23fc89e26c2bda8622bb.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/main.23fc89e26c2bda8622bb.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/main.23fc89e26c2bda8622bb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/vender-base.23fc89e26c2bda8622bb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/vender-exten.23fc89e26c2bda8622bb.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,11 +78,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1374">
-              <caret line="734" column="10" selection-start-line="734" selection-start-column="10" selection-end-line="734" selection-end-column="10" />
+            <state relative-caret-position="904">
+              <caret line="731" column="9" selection-start-line="731" selection-start-column="9" selection-end-line="731" selection-end-column="9" />
               <folding>
                 <element signature="e#189#210#0" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#2;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#1;n#div#1;n#div#2;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -52,9 +105,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/css/rewrite.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="682">
+              <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/member/Account.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
+            <state relative-caret-position="1891">
               <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
               <folding>
                 <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" />
@@ -164,10 +226,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/member/chat/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21018">
-              <caret line="686" column="30" selection-start-line="686" selection-start-column="16" selection-end-line="686" selection-end-column="30" />
+            <state relative-caret-position="566">
+              <caret line="476" column="3" selection-start-line="476" selection-start-column="3" selection-end-line="476" selection-end-column="3" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -207,6 +268,7 @@
       <find>memberManage</find>
       <find>memberaudit</find>
       <find>selectPic</find>
+      <find>order.list</find>
     </findStrings>
     <replaceStrings>
       <replace>../webapp/</replace>
@@ -240,9 +302,10 @@
         <option value="$PROJECT_DIR$/src/css/basis/basis-grid.less" />
         <option value="$PROJECT_DIR$/src/service/member.js" />
         <option value="$PROJECT_DIR$/src/views/member/Authenticate.vue" />
-        <option value="$PROJECT_DIR$/src/views/member/chat/index.vue" />
         <option value="$PROJECT_DIR$/src/views/member/Account.vue" />
         <option value="$PROJECT_DIR$/src/views/otc/orderManage.vue" />
+        <option value="$PROJECT_DIR$/src/css/rewrite.less" />
+        <option value="$PROJECT_DIR$/src/views/member/chat/index.vue" />
         <option value="$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue" />
       </list>
     </option>
@@ -294,7 +357,7 @@
               <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
               <item name="exchange_admin_web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
@@ -390,18 +453,19 @@
       <workItem from="1568626825884" duration="2694000" />
       <workItem from="1568683199920" duration="17288000" />
       <workItem from="1568774864828" duration="4850000" />
-      <workItem from="1568863009293" duration="3224000" />
+      <workItem from="1568863009293" duration="3939000" />
+      <workItem from="1568968824035" duration="5167000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30788000" />
+    <option name="totallyTimeSpent" value="36670000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="2536" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1932299" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25811002" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -411,7 +475,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.29321116" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.26905456" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
@@ -638,25 +702,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/member/chat/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21018">
-          <caret line="686" column="30" selection-start-line="686" selection-start-column="16" selection-end-line="686" selection-end-column="30" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#1;n#div#1;n#template#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#template#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/member/Account.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
+        <state relative-caret-position="1891">
           <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
           <folding>
             <element signature="n#Modal#0;n#div#0;n#template#0;n#!!top" />
@@ -753,6 +801,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/rewrite.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/member/chat/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="476" column="3" selection-start-line="476" selection-start-column="3" selection-end-line="476" selection-end-column="3" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#1;n#div#1;n#template#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#template#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/otc/orderManage.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="541">
@@ -762,11 +832,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1374">
-          <caret line="734" column="10" selection-start-line="734" selection-start-column="10" selection-end-line="734" selection-end-column="10" />
+        <state relative-caret-position="904">
+          <caret line="731" column="9" selection-start-line="731" selection-start-column="9" selection-end-line="731" selection-end-column="9" />
           <folding>
             <element signature="e#189#210#0" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#2;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#1;n#div#1;n#div#2;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />

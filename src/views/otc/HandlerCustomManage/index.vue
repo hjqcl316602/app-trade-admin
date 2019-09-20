@@ -460,8 +460,6 @@ export default {
         accessToken: this.basis.accessToken,
         uidType: roleItem["uidToType"]
       };
-      console.log("send");
-      console.log(sendParams);
 
       this.chat.list.push(sendParams);
 
@@ -722,8 +720,9 @@ export default {
     "order.list": {
       handler(val) {
         setTimeout(() => {
+          console.log("order");
           this.getClipboardImage();
-        }, 100);
+        }, 1500);
       },
       deep: true,
       immediate: true
@@ -734,10 +733,13 @@ export default {
 
 <template>
   <div class="vv-custom">
-    <Modal v-model="chat.picture.show">
-      <div class="" style="text-align:center">
-        <img :src="chat.picture.url" alt="" />
-      </div>
+    <Modal
+      v-model="chat.picture.show"
+      class="ivu-modal--preview"
+      title="图片预览"
+      width="100%"
+    >
+      <img :src="chat.picture.url" alt="" class="is-preview" />
       <div slot="footer"></div>
     </Modal>
     <Card>

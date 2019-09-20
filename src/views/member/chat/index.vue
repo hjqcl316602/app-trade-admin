@@ -480,10 +480,13 @@ export default {
 
 <template>
   <div class="vv-chat">
-    <Modal v-model="chat.picture.show">
-      <div class="" style="text-align:center">
-        <img :src="chat.picture.url" alt="" />
-      </div>
+    <Modal
+      v-model="chat.picture.show"
+      class="ivu-modal--preview"
+      title="图片预览"
+      width="100%"
+    >
+      <img :src="chat.picture.url" alt="" class="is-preview" />
       <div slot="footer"></div>
     </Modal>
 
