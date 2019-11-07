@@ -14,7 +14,7 @@ import { getChatHistoryKfAndCd, getMemberChat } from "@/service/custom";
 
 import { uploadImage } from "@/service/common";
 import { memberManage } from "@/service/getData";
-
+import { mapState } from 'vuex'
 import { stringer } from "store-es";
 
 var Stomp = require("stompjs");
@@ -61,10 +61,15 @@ export default {
           show: false,
           url: ""
         }
-      }
+      },
+        letter:{
+            modal: false
+        }
     };
   },
-  computed: {},
+    computed: mapState({
+        storeCustomLetter: state=> state.custom.letter
+    }),
 
   mounted() {
     this.init();
@@ -388,6 +393,28 @@ export default {
       this.sendSocketMessage({ content: this.chat.pic, type: 1 });
       this.chat.pic = "";
     },
+      /**
+       * 设置常用语
+       */
+      createLetter(message){
+          if (message === "") {
+              return this.$Message.error("聊天内容不能为空！");
+          }
+          this.$store.commit('setLetter',message)
+      },
+      clearLetter({ id }){
+          this.$store.commit('clearLetter',id)
+      },
+      sendLetter({ text }){
+          if (!this.chat.connected) {
+              return this.$Message.error("当前聊天室连接未成功，请重试！");
+          }
+          if (this.member.activeIndex === -1) {
+              return this.$Message.error("当前没有选择会员！");
+          }
+          this.sendSocketMessage({ content: text, type: 0 });
+          this.letter.modal = false
+      },
     /**
      * 让滚动条始终在底部
      */
@@ -480,6 +507,22 @@ export default {
 
 <template>
   <div class="vv-chat">
+    <Modal class=""
+           v-model="letter.modal"
+           title="常用语"
+           width="50%"
+    >
+      <div class="" style="max-height: 500px;overflow: auto">
+        <div class="vui-margin-bottom" v-for="(item,index) in  storeCustomLetter" :key="index">
+          <span class="vui-margin-right">
+             {{ item.text }}
+          </span>
+          <Button type="primary"  size="small" @click="sendLetter(item)">发送</Button>
+          <Button type="error" size="small"  @click="clearLetter(item)">清除</Button>
+        </div>
+      </div>
+      <div slot="footer"></div>
+    </Modal>
     <Modal
       v-model="chat.picture.show"
       class="ivu-modal--preview"
@@ -521,7 +564,9 @@ export default {
             </div>
             <div class="vui-grid-child vui-flex-grow--0 vui-padding-right">
               <i-button type="primary" @click="getUserList(false)"
-                >搜索</i-button
+                >
+                搜索
+              </i-button
               >
             </div>
           </div>
@@ -557,7 +602,7 @@ export default {
           </div>
         </div>
 
-        <div style="width:300px">
+        <div style="width:300px" v-if="member.list.length > 0 ">
           <div class="vui-contain--vertical vui-overflow--auto">
             <div
               v-for="(item, index) in member.list"
@@ -692,10 +737,18 @@ export default {
                 placeholder="输入聊天内容 按回车键可发送"
               ></Input>
             </div>
-
-            <Button type="primary" @click="sendMessage">发送</Button>
+            <div>
+              <Button type="primary" @click="sendMessage">发送</Button>
+            </div>
+            <div class="vui-margin-left" v-if="storeCustomLetter.length > 0 ">
+              <Button   @click="letter.modal = true " type="warning">常用语</Button>
+            </div>
+            <div class="vui-margin-left" >
+              <Button   @click="createLetter(chat.message)">设置为常用语</Button>
+            </div>
           </div>
         </div>
+
       </div>
     </Card>
   </div>

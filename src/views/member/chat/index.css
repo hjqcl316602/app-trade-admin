@@ -196,3 +196,12 @@
 .upload>input[type="file"] {
   display: none;
 }
+
+/*聊天-常用语*/
+.chat-letter-item{
+  cursor: pointer;
+}
+.chat-letter-item:hover{
+  cursor: pointer;
+  color:#6560ff
+}

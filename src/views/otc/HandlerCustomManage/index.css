@@ -15,23 +15,29 @@
   align-items: center
 }
 
-.vv-custom--header .vv-custom--info {
+.vv-custom--header .vv-custom--header-item {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center
 }
-
+.vv-custom-letter,
+.vv-custom-work,
 .vv-custom--nav,
 .vv-custom--info {
   flex: none;
-  width: 250px;
+  width: 200px;
   height: 100%;
   overflow-y: auto;
+
+}
+.vv-custom-work,
+.vv-custom--nav{
+  border-right: 1px solid #e3e8ee;
 }
 
 .vv-custom--nav {
-  border-right: 1px solid #e3e8ee;
+
 }
 
 .vv-custom--nav-item,
@@ -46,7 +52,7 @@
 .vv-custom--nav-item {
   padding: 20px;
 }
-
+.vv-custom-work-item:not(:last-child),
 .vv-custom--nav-item:not(:last-child),
 .vv-custom--role-item:not(:last-child) {
   border-bottom: 1px solid #fafafa

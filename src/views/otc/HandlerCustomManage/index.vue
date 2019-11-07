@@ -16,11 +16,13 @@ import {
   getAppealDetail,
   getChatHistory,
   closeAppeal,
-  setChatStatus
+  setChatStatus,
+    closeWork
 } from "@/service/custom";
 import { stringer } from "store-es";
 
 import { uploadImage } from "@/service/common";
+import { mapState } from 'vuex'
 
 var Stomp = require("stompjs");
 var SockJS = require("sockjs-client");
@@ -47,6 +49,8 @@ export default {
       work: {
         status: 0
       },
+        workList:[],
+
 
       chat: {
         list: [],
@@ -66,10 +70,15 @@ export default {
 
       message: {},
 
-      detail: {}
+      detail: {},
+        letter:{
+          modal: false
+        }
     };
   },
-  computed: {},
+  computed: mapState({
+      storeCustomLetter: state=> state.custom.letter
+  }),
 
   mounted() {
     this.init();
@@ -104,6 +113,7 @@ export default {
         }
       };
     },
+
     /**
      * 获取基础信息
      */
@@ -126,6 +136,9 @@ export default {
           .then(res => {
             this.message = res;
             this.work.status = res.workStatus;
+
+            // 获取上班的客服成员
+              this.workList = res.workList || [];
 
             // 获取数据改变之前的orderActive 的 orderId
 
@@ -529,6 +542,31 @@ export default {
       this.sendSocketMessage({ content: this.chat.pic, type: 1 });
       this.chat.pic = "";
     },
+      /**
+       * 设置常用语
+       */
+      createLetter(message){
+          if (message === "") {
+              return this.$Message.error("内容不能为空！");
+          }
+        this.$store.commit('setLetter',message)
+      },
+      clearLetter({ id }){
+          this.$store.commit('clearLetter',id)
+      },
+      sendLetter({ text }){
+          if (!this.chat.connected)
+              return this.$Message.error("当前聊天室连接未成功，请重试！");
+
+          if (this.order.activeIndex === -1)
+              return this.$Message.error("当前没有选择申诉订单！");
+
+          if (this.role.activeIndex === -1)
+              return this.$Message.error("当前没有选择聊天对象！");
+
+          this.sendSocketMessage({ content: text, type: 0 });
+          this.letter.modal = false
+      },
     /**
      * 让滚动条始终在底部
      */
@@ -607,6 +645,23 @@ export default {
 
       //this.work.status = !this.work.status;
     },
+      /**
+       * 关闭成员的工作状态
+       */
+      closeWork({ id , realName }){
+          this.$Modal.confirm({
+              title: "确认提示",
+              content: `是否确认关闭【${realName}】的工作？`,
+              onOk: () => {
+                  closeWork({ adminId : id }).then(res=>{
+                      this.$Message.success(
+                          `${realName}的工作状态关闭成功！`
+                      );
+                      this.init()
+                  })
+              }
+          });
+      },
     /**
      * 选择图片，并发送图片消息
      */
@@ -742,6 +797,22 @@ export default {
       <img :src="chat.picture.url" alt="" class="is-preview" />
       <div slot="footer"></div>
     </Modal>
+    <Modal class=""
+           v-model="letter.modal"
+           title="常用语"
+           width="50%"
+    >
+      <div class="" style="max-height: 500px;overflow: auto">
+        <div class="vui-margin-bottom" v-for="(item,index) in  storeCustomLetter" :key="index">
+          <span class="vui-margin-right">
+             {{ item.text }}
+          </span>
+          <Button type="primary"  size="small" @click="sendLetter(item)">发送</Button>
+          <Button type="error" size="small"  @click="clearLetter(item)">清除</Button>
+        </div>
+      </div>
+      <div slot="footer"></div>
+    </Modal>
     <Card>
       <p slot="title">
         申诉工作台
@@ -761,7 +832,7 @@ export default {
               {{ getWorkStatus(work.status) }}工作
             </Button>
           </div>
-          <div class="vv-custom--info">
+          <div class="vv-custom--header-item">
             <span class="vui-text--small vui-margin-bottom--small">
               未处理订单
             </span>
@@ -769,7 +840,7 @@ export default {
               >{{ message["undoAppealCnt"] }}
             </span>
           </div>
-          <div class="vv-custom--info">
+          <div class="vv-custom--header-item">
             <span class="vui-text--small vui-margin-bottom--small">
               正在处理订单
             </span>
@@ -777,7 +848,7 @@ export default {
               {{ message["doingAppealCnt"] }}
             </span>
           </div>
-          <div class="vv-custom--info">
+          <div class="vv-custom--header-item">
             <span class="vui-text--small vui-margin-bottom--small">
               今日已处理订单
             </span>
@@ -785,7 +856,7 @@ export default {
               {{ message["todayAppealCnt"] }}
             </span>
           </div>
-          <div class="vv-custom--info">
+          <div class="vv-custom--header-item">
             <span class="vui-text--small vui-margin-bottom--small">
               正在处理订单（我的）
             </span>
@@ -793,13 +864,25 @@ export default {
               {{ message["myDoingAppealCnt"] }}
             </span>
           </div>
-          <div class="vv-custom--info">
+          <div class="vv-custom--header-item">
             <span class="vui-text--small vui-margin-bottom--small">
               今日已处理订单（我的）
             </span>
             <span class="vui-text--primary vui-text--bold">
               {{ message["myTodayAppealCnt"] }}
             </span>
+          </div>
+        </div>
+
+        <div class="vv-custom-work" v-if="workList.length > 0 ">
+          <div style="text-align: center;line-height: 44px">
+            <span style="font-weight: bold">正在工作中的客服成员</span>
+          </div>
+          <div v-for="(item,index) in workList" class="vv-custom-work-item" style="line-height: 44px">
+             <div class="   ">
+               <span class="vui-margin-right--large">{{ item.realName }}</span>
+               <Button  size="small" @click="closeWork(item)">关闭</Button>
+             </div>
           </div>
         </div>
 
@@ -1024,9 +1107,18 @@ export default {
               >
               </Input>
             </div>
-            <Button type="primary" @click="sendMessage">发送</Button>
+            <div>
+              <Button type="primary" @click="sendMessage">发送</Button>
+            </div>
+            <div class="vui-margin-left" v-if="storeCustomLetter.length > 0 ">
+              <Button   @click="letter.modal = true " type="warning">常用语</Button>
+            </div>
+            <div class="vui-margin-left" >
+              <Button   @click="createLetter(chat.message)">设置为常用语</Button>
+            </div>
           </div>
         </div>
+
       </div>
     </Card>
   </div>
