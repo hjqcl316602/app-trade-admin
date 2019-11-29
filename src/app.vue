@@ -9,6 +9,7 @@
 @import "./styles/common.less";
 @import "./styles/reset-iview-style.less";
 @import "./css/index.less";
+@import './styles/ui/main.less';
 </style>
 <template>
   <div id="main" class="app-main">

@@ -191,6 +191,9 @@
 							<li><span>转账时间：</span>{{ !modelInner.transferTime ? '--' : modelInner.transferTime }}</li>
 
 						</ul>
+					<div>
+						<Button type="error" @click="createBlackList(modelInner)">加入黑名单</Button>
+					</div>
 					<div slot="footer">
 					</div>
 			</Modal>
@@ -204,7 +207,8 @@ import {
   queryOtcOrder,
   coinOutExcel,
   BASICURL,
-  getCoinName
+  getCoinName,
+    setBlack
 } from "@/service/getData";
 
 export default {
@@ -334,7 +338,7 @@ export default {
           align: "center",
           key: "handle",
           render: (h, obj) => {
-            return h("div", [
+            return h("div",[
               h(
                 "Button",
                 {
@@ -352,7 +356,7 @@ export default {
                   }
                 },
                 "查看"
-              )
+              ),
             ]);
           }
         }
@@ -405,8 +409,27 @@ export default {
     showInfoModal(obj) {
       this.showModal = true;
       this.modelInner = obj.row;
-      console.log(obj);
     },
+	  // 加入黑名单
+      createBlackList({ id,subMemId }){
+		this.$Modal.confirm({
+            title:'加入黑名单',
+            content:"是否确认将用户【"+subMemId+"】加入黑名单？",
+            onOk:()=>{
+                setBlack({
+					id
+				})
+                    .then(({ code ,message}) => {
+                        if ( code === 0) {
+                            this.$Message.success(message);
+                        } else this.$Message.error(message);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+			}
+		})
+	  },
     queryStatus(obj) {
       if (obj.query.status === undefined) {
         this.orderStatus = null;

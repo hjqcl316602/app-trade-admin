@@ -16,6 +16,7 @@ import "@/locale";
 
 import "./theme/styles/iview.css";
 
+
 import VueI18n from "vue-i18n";
 import util from "@/libs/util";
 import axios from "axios";
@@ -24,7 +25,8 @@ import Api from "@/config/api";
 import Cookies from "js-cookie";
 import Viser from "viser-vue";
 import { setStore, getStore, removeStore } from "@/config/storage.js";
-
+import { stringer } from '../package/es'
+console.log(stringer.connect.end('13980464273',' ' ))
 // import mui from './mui/src/mui'
 // Vue.use(mui)
 
@@ -58,7 +60,14 @@ Vue.filter("toFloor", (number, scale) => {
   return toFloor(number, scale);
 });
 
+Vue.filter("formatPhone", value => stringer.connect.end(value,' '));
+
+Vue.filter("formatCard", value => stringer.connect.start(value,' '));
+
+
 Vue.prototype.toFloor = toFloor;
+Vue.prototype.formatPhone = value => stringer.connect.end(value,' ');
+Vue.prototype.formatCard = value => stringer.connect.start(value,' ');
 
 axios.interceptors.response.use(response => {
   const data = response.data;

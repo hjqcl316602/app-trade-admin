@@ -1,80 +1,97 @@
 <template>
-	<div>
-		<Card>
-				<p slot="title">
-					后台广告
-					<Button type="primary" size="small" @click="refreshPageManual">
-						<Icon type="refresh"></Icon> 刷新
-					</Button>
-				</p>
-			
-				<Row class="functionWrapper">
-					<div class="btnsWrapper">
-						<Button type="error" @click="batchDel">批量删除</Button>
-					</div>
+  <div>
+    <Card>
+      <p slot="title">
+        后台广告
+        <Button type="primary" size="small" @click="refreshPageManual">
+          <Icon type="refresh"></Icon> 刷新
+        </Button>
+      </p>
 
-					<div class="searchWrapper clearfix">
-						<div class="poptip">
-							<Poptip trigger="hover" 
-											content="请输入手机号、真实姓名或会员名称搜索" 
-											placement="bottom-start">
-								<Input placeholder="请输入手机号、真实姓名或会员名称搜索" 
-											v-model="filterSearch.account"/> 
-								</Input>      
-							</Poptip>
-						</div>
+      <Row class="functionWrapper">
+        <div class="btnsWrapper">
+          <Button type="error" @click="batchDel">批量删除</Button>
+        </div>
 
-						<div class="poptip">
-								<Poptip trigger="hover" 
-											content="请输入支付方式搜索" 
-											placement="bottom-start">
-								<Input placeholder="请输入支付方式搜索" 
-											v-model="filterSearch.payModel"/> 
-								</Input>      
-							</Poptip>
-						</div>
+        <div class="searchWrapper clearfix">
+          <div class="poptip">
+            <Poptip
+              trigger="hover"
+              content="请输入手机号、真实姓名或会员名称搜索"
+              placement="bottom-start"
+            >
+              <Input
+                placeholder="请输入手机号、真实姓名或会员名称搜索"
+                v-model="filterSearch.account"
+              />
+            </Poptip>
+          </div>
 
-						<div class="poptip">
-							<span>类型：</span>
-							<Select v-model="filterSearch.advertiseType">
-								<Option v-for="item in advertiseTypeArr" 
-											:value="item.status" 
-											:key="item.status">{{ item.text }}</Option>
-							</Select>
-						</div>
+          <div class="poptip">
+            <Poptip
+              trigger="hover"
+              content="请输入支付方式搜索"
+              placement="bottom-start"
+            >
+              <Input
+                placeholder="请输入支付方式搜索"
+                v-model="filterSearch.payModel"
+              />
+            </Poptip>
+          </div>
 
-						<div class="poptip">
-							<span>状态：</span>
-							<Select v-model="filterSearch.status">
-								<Option v-for="item in advertiseStatusArr" 
-											:value="item.status" 
-											:key="item.status">{{ item.text }}</Option>
-							</Select>
-						</div>
-					
-						<div class="btns">
-							<Button type="info" size="small" @click="searchByFilter">搜索</Button>
-						</div>
-					</div>
+          <div class="poptip">
+            <span>类型：</span>
+            <Select v-model="filterSearch.advertiseType">
+              <Option
+                v-for="item in advertiseTypeArr"
+                :value="item.status"
+                :key="item.status"
+                >{{ item.text }}
+              </Option>
+            </Select>
+          </div>
 
-				</Row>
+          <div class="poptip">
+            <span>状态：</span>
+            <Select v-model="filterSearch.status">
+              <Option
+                v-for="item in advertiseStatusArr"
+                :value="item.status"
+                :key="item.status"
+                >{{ item.text }}</Option
+              >
+            </Select>
+          </div>
 
-				<Row>
-					<Table :loading="ifloading" 
-							 	 :columns="columnsList" 
-							 	 :data="cbData.content"
-								 @on-selection-change="selectionChange" 
-								 border></Table>
-				</Row>
+          <div class="btns">
+            <Button type="info" size="small" @click="searchByFilter"
+              >搜索</Button
+            >
+          </div>
+        </div>
+      </Row>
 
-				<Row class="pageWrapper" >
-					<Page :total="cbData.totalElements" 
-								:current="currentPageIdx"   
-								@on-change="changePage" 
-								show-elevator></Page>
-				</Row>
-		</Card>
-	</div>
+      <Row>
+        <Table
+          :loading="ifloading"
+          :columns="columnsList"
+          :data="cbData.content"
+          @on-selection-change="selectionChange"
+          border
+        ></Table>
+      </Row>
+
+      <Row class="pageWrapper">
+        <Page
+          :total="cbData.totalElements"
+          :current="currentPageIdx"
+          @on-change="changePage"
+          show-elevator
+        ></Page>
+      </Row>
+    </Card>
+  </div>
 </template>
 <script>
 import { queryOtcAdv, upDownAdv } from "@/service/getData";
@@ -82,21 +99,21 @@ import { queryOtcAdv, upDownAdv } from "@/service/getData";
 export default {
   data() {
     return {
-			selection: [],
+      selection: [],
       cbData: {},
       currentPageIdx: 1,
       filterSearch: {
         account: "",
-				advertiseType: "",
-				status: "",
+        advertiseType: "",
+        status: "",
         payModel: ""
       },
       advertiseTypeArr: [
         { status: 0, text: "买入" },
         { status: 1, text: "卖出" },
         { status: "", text: "全部" }
-			],
-			advertiseStatusArr: [
+      ],
+      advertiseStatusArr: [
         { status: 0, text: "上架" },
         { status: 1, text: "下架" },
         { status: "", text: "全部" }
@@ -120,17 +137,17 @@ export default {
           title: "创建人",
           render: (h, obj) => {
             let member = obj.row.member;
-            console.log(member.username)
-            return h('div',[
-              h('p',{},member.username),
-              h('p',{},`(${member.realName})`),
-            ]) 
+            console.log(member.username);
+            return h("div", [
+              h("p", {}, member.username),
+              h("p", {}, `(${member.realName})`)
+            ]);
           }
         },
         {
           title: "币种",
           render: (h, obj) => {
-            return h('span',obj.row.coin.unit) 
+            return h("span", obj.row.coin.unit);
           }
         },
         {
@@ -145,7 +162,7 @@ export default {
           title: "广告限额",
           align: "center",
           render: (h, obj) => {
-            return h('span',`${obj.row.minLimit}-${obj.row.maxLimit}`);
+            return h("span", `${obj.row.minLimit}-${obj.row.maxLimit}`);
           }
         },
         {
@@ -194,18 +211,25 @@ export default {
                   }
                 },
                 "下架"
-							),
-							h('Button', {
-								props: {
-									type: 'info',
-									size: 'small'
-								},
-								on: {
-									click: () => {
-										this.$router.push({name: 'otc:adManage:advertisedetail', query: {advID : obj.row.id}})
-									}
-								}
-							}, '详情')
+              ),
+              h(
+                "Button",
+                {
+                  props: {
+                    type: "info",
+                    size: "small"
+                  },
+                  on: {
+                    click: () => {
+                      this.$router.push({
+                        name: "otc:adManage:advertisedetail",
+                        query: { advID: obj.row.id }
+                      });
+                    }
+                  }
+                },
+                "详情"
+              )
               // h(
               //   "Button",
               //   {
@@ -217,7 +241,7 @@ export default {
               //   },
               //   [
               //     h(
-								
+
               //       "Poptip",
               //       {
               //         props: {
@@ -245,28 +269,30 @@ export default {
     };
   },
   methods: {
-		selectionChange(selection) {
-			this.selection = selection;
-		},
-		batchDel() {
-			let ids = [];
-      console.log(this.selection)
-			this.selection.forEach(item => {
-				ids.push(item.id);
-			})
-			this.operation({ ids: ids, status: 2 });
-		},
+    selectionChange(selection) {
+      this.selection = selection;
+    },
+    batchDel() {
+      let ids = [];
+      console.log(this.selection);
+      this.selection.forEach(item => {
+        ids.push(item.id);
+      });
+      this.operation({ ids: ids, status: 2 });
+    },
     operation(obj) {
-      upDownAdv(obj).then(res => {
+      upDownAdv(obj)
+        .then(res => {
           if (!res.code) {
             this.$Message.success(res.message);
-            this.refreshPage({ pageNo: this.currentPageIdx, pageSize: 10 });
+            this.searchByFilter(this.currentPageIdx)
           } else this.$Message.error(res.message);
-        }).catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
     },
-    searchByFilter() {
-			this.currentPageIdx = 1;
-      let obj = Object.assign(this.filterSearch, { pageNo: 1, pageSize: 10 });
+    searchByFilter(pageNo=1) {
+      this.currentPageIdx = pageNo;
+      let obj = Object.assign(this.filterSearch, { pageNo: pageNo, pageSize: 10 });
       this.refreshPage(obj);
     },
     refreshPageManual() {
@@ -286,7 +312,8 @@ export default {
 
     refreshPage(obj = {}) {
       this.ifloading = true;
-      queryOtcAdv(obj).then(res => {
+      queryOtcAdv(obj)
+        .then(res => {
           if (!res.code) {
             this.cbData = res.data;
           } else this.$Message.error(res.message);
@@ -303,6 +330,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

@@ -10,6 +10,7 @@
 import "./index.css";
 import { BASEURL } from "@/service/http";
 import Cookies from "js-cookie";
+import { storager } from '../../../../package/es'
 import {
   getWorkBench,
   changeWorkStatus,
@@ -17,12 +18,12 @@ import {
   getChatHistory,
   closeAppeal,
   setChatStatus,
-    closeWork
+  closeWork
 } from "@/service/custom";
 import { stringer } from "store-es";
 
 import { uploadImage } from "@/service/common";
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 var Stomp = require("stompjs");
 var SockJS = require("sockjs-client");
@@ -49,8 +50,7 @@ export default {
       work: {
         status: 0
       },
-        workList:[],
-
+      workList: [],
 
       chat: {
         list: [],
@@ -71,13 +71,13 @@ export default {
       message: {},
 
       detail: {},
-        letter:{
-          modal: false
-        }
+      letter: {
+        list: []
+      }
     };
   },
   computed: mapState({
-      storeCustomLetter: state=> state.custom.letter
+    storeCustomLetter: state => state.custom.letter
   }),
 
   mounted() {
@@ -88,7 +88,35 @@ export default {
       this.getBasisMessage();
       this.getWorkBench();
       this.createSocket();
+      this.getLetterList();
     },
+
+    /**
+     * 描述：获取历史常用语
+     */
+    getLetterList() {
+      this.letter.list = storager.getStore("app/chat/custom/letter") || [];
+    },
+    /**
+     * 描述：获取历史常用语
+     */
+    setLetter(message) {
+      if (!message) return this.$Message.error("常用语不能为空");
+      let letters = storager.getStore("app/chat/custom/letter") || [];
+      if (letters.find(ele => ele === message)) return false;
+      letters.unshift(message);
+      this.letter.list = letters;
+      storager.setStore("app/chat/custom/letter", letters);
+    },
+    /**
+     * 描述：清除历史常用语
+     */
+    clearLetter(message) {
+      let letters = storager.getStore("app/chat/custom/letter") || [];
+      this.letter.list = letters.filter(ele => ele !== message);
+      storager.setStore("app/chat/custom/letter", this.letter.list);
+    },
+
     /**
      * 时间：2019/9/18 ,
      * 描述：获取粘贴板的图片文件
@@ -138,7 +166,7 @@ export default {
             this.work.status = res.workStatus;
 
             // 获取上班的客服成员
-              this.workList = res.workList || [];
+            this.workList = res.workList || [];
 
             // 获取数据改变之前的orderActive 的 orderId
 
@@ -484,7 +512,7 @@ export default {
     /**
      * 发送文本信息
      */
-    sendMessage() {
+    sendMessage(message) {
       // console.log(stringer);
       if (!this.chat.connected) {
         this.$Message.error("当前聊天室连接未成功，请重试！");
@@ -499,21 +527,21 @@ export default {
         return;
       }
 
-      if (this.chat.message === "") {
+      if (message === "") {
         this.$Message.error("聊天内容不能为空！");
         return;
       }
-      if (stringer.check.space.whole(this.chat.message)) {
+      if (stringer.check.space.whole(message)) {
         this.$Message.error("聊天内容不能全部为空字符串！");
         return;
       }
 
-      if (this.chat.message.length > 150) {
+      if (message.length > 150) {
         this.$Message.error("聊天内容长度不能超过150");
         return;
       }
 
-      this.sendSocketMessage({ content: this.chat.message, type: 0 });
+      this.sendSocketMessage({ content: message, type: 0 });
       this.chat.message = "";
     },
 
@@ -542,31 +570,7 @@ export default {
       this.sendSocketMessage({ content: this.chat.pic, type: 1 });
       this.chat.pic = "";
     },
-      /**
-       * 设置常用语
-       */
-      createLetter(message){
-          if (message === "") {
-              return this.$Message.error("内容不能为空！");
-          }
-        this.$store.commit('setLetter',message)
-      },
-      clearLetter({ id }){
-          this.$store.commit('clearLetter',id)
-      },
-      sendLetter({ text }){
-          if (!this.chat.connected)
-              return this.$Message.error("当前聊天室连接未成功，请重试！");
 
-          if (this.order.activeIndex === -1)
-              return this.$Message.error("当前没有选择申诉订单！");
-
-          if (this.role.activeIndex === -1)
-              return this.$Message.error("当前没有选择聊天对象！");
-
-          this.sendSocketMessage({ content: text, type: 0 });
-          this.letter.modal = false
-      },
     /**
      * 让滚动条始终在底部
      */
@@ -645,23 +649,21 @@ export default {
 
       //this.work.status = !this.work.status;
     },
-      /**
-       * 关闭成员的工作状态
-       */
-      closeWork({ id , realName }){
-          this.$Modal.confirm({
-              title: "确认提示",
-              content: `是否确认关闭【${realName}】的工作？`,
-              onOk: () => {
-                  closeWork({ adminId : id }).then(res=>{
-                      this.$Message.success(
-                          `${realName}的工作状态关闭成功！`
-                      );
-                      this.init()
-                  })
-              }
+    /**
+     * 关闭成员的工作状态
+     */
+    closeWork({ id, realName }) {
+      this.$Modal.confirm({
+        title: "确认提示",
+        content: `是否确认关闭【${realName}】的工作？`,
+        onOk: () => {
+          closeWork({ adminId: id }).then(res => {
+            this.$Message.success(`${realName}的工作状态关闭成功！`);
+            this.init();
           });
-      },
+        }
+      });
+    },
     /**
      * 选择图片，并发送图片消息
      */
@@ -797,18 +799,22 @@ export default {
       <img :src="chat.picture.url" alt="" class="is-preview" />
       <div slot="footer"></div>
     </Modal>
-    <Modal class=""
-           v-model="letter.modal"
-           title="常用语"
-           width="50%"
-    >
+    <Modal class="" v-model="letter.modal" title="常用语" width="50%">
       <div class="" style="max-height: 500px;overflow: auto">
-        <div class="vui-margin-bottom" v-for="(item,index) in  storeCustomLetter" :key="index">
+        <div
+          class="vui-margin-bottom"
+          v-for="(item, index) in storeCustomLetter"
+          :key="index"
+        >
           <span class="vui-margin-right">
-             {{ item.text }}
+            {{ item.text }}
           </span>
-          <Button type="primary"  size="small" @click="sendLetter(item)">发送</Button>
-          <Button type="error" size="small"  @click="clearLetter(item)">清除</Button>
+          <Button type="primary" size="small" @click="sendLetter(item)"
+            >发送</Button
+          >
+          <Button type="error" size="small" @click="clearLetter(item)"
+            >清除</Button
+          >
         </div>
       </div>
       <div slot="footer"></div>
@@ -820,7 +826,319 @@ export default {
           <Icon type="refresh"></Icon> 刷新
         </Button>
       </p>
-      <div class="vv-custom--body">
+
+      <div>
+        <div class="vi-row vi-margin-bottom">
+          <div class="vi-span is-span--6">
+            <Button
+              :type="work.status === 1 ? 'default' : 'primary'"
+              size="large"
+              long
+              @click="changeWorkStatus"
+            >
+              {{ getWorkStatus(work.status) }}工作
+            </Button>
+          </div>
+          <div class="vi-span is-span--18  ">
+            <div
+              class="vi-flex is-justify-content--space-between vi-padding-ad"
+            >
+              <div style="line-height: 36px">
+                <span>
+                  未处理订单:
+                </span>
+                <span class="vi-text is-color--primary">
+                  {{ message["undoAppealCnt"] }}
+                </span>
+              </div>
+              <div style="line-height: 36px">
+                <span>
+                  正在处理订单:
+                </span>
+                <span class="vi-text is-color--primary">
+                  {{ message["doingAppealCnt"] }}
+                </span>
+              </div>
+              <div style="line-height: 36px">
+                <span>
+                  今日已处理订单:
+                </span>
+                <span class="vi-text is-color--primary">
+                  {{ message["todayAppealCnt"] }}
+                </span>
+              </div>
+              <div style="line-height: 36px">
+                <span>
+                  正在处理订单（我的）:
+                </span>
+                <span class="vi-text is-color--primary">
+                  {{ message["myDoingAppealCnt"] }}
+                </span>
+              </div>
+              <div style="line-height: 36px">
+                <span>
+                  今日已处理订单（我的）:
+                </span>
+                <span class="vi-text is-color--primary">
+                  {{ message["myTodayAppealCnt"] }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vi-flex" style="height:calc(100vh - 260px)">
+          <template v-if="workList.length > 0">
+            <div
+                    style="width: 150px;height: 100%;overflow: auto"
+                    class="vi-border is-border--right is-border--thin"
+            >
+              <div class="vi-text is-align--center" style="line-height: 48px">
+                <span class="vi-text is-weight--bold">工作中客服</span>
+              </div>
+              <div
+                      class="vi-border"
+                      v-for="(item, index) in workList"
+              >
+                <div
+                        class="vi-padding vi-border is-border--bottom is-border--thin"
+                >
+                  <div   class="vi-flex is-justify-content--space-between is-align-items--center">
+                    <span>{{ item.realName }}</span>
+                    <Button size="small" @click="closeWork(item)">关闭</Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+          <template v-if="order.list.length > 0">
+            <div
+              style="width: 200px;height: 100%;overflow: auto"
+              class="vi-border is-border--right is-border--thin"
+            >
+              <div class="vi-text is-align--center" style="line-height: 48px">
+                <span class="vi-text is-weight--bold">待处理订单</span>
+              </div>
+              <div
+                class="vi-border"
+                @click="changeOrder(item, index)"
+                v-for="(item, index) in order.list"
+                :class="{
+                  'vi-background is-background--gray is-border--left is-border--primary is-border--bold':
+                    index == order.activeIndex
+                }"
+              >
+                <div
+                  class="vi-padding vi-border is-border--bottom is-border--thin"
+                >
+                  <div class="vi-flex is-justify-content--space-between" style="line-height: 32px">
+                    <span>{{ item.orderSn }}</span>
+                    <template v-if="item.cnt !==0 ">
+                        <span class="vi-tag ">
+                            <span class="vi-tag-label">{{ item.cnt }}</span>
+                          </span>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="width: 300px;height: 100%;overflow: auto"
+              class="vi-border is-border--right is-border--thin"
+            >
+              <div class="vi-text is-align--center" style="line-height: 48px">
+                <span class="vi-text is-weight--bold">订单详情</span>
+              </div>
+              <div
+                class="vi-border"
+                @click="changeRole(item, index)"
+                v-for="(item, index) in role.list"
+                :class="{
+                  'vi-background is-background--gray is-border--left is-border--primary is-border--bold':
+                    index == role.activeIndex
+                }"
+              >
+                <div
+                  class="vi-padding vi-border is-border--bottom is-border--thin"
+                >
+                  <div style="line-height: 24px">
+                    <p class="vi-flex is-justify-content--space-between">
+                      <span>{{ item.label }}</span>
+                      <template v-if="item.cnt !==0 ">
+                        <span class="vi-tag ">
+                            <span class="vi-tag-label">{{ item.cnt }}</span>
+                          </span>
+                      </template>
+                    </p>
+                    <p class="vi-text is-size--smaller is-color--gray">
+                      {{ item.userName }} | {{ item.mobile | formatPhone}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="vi-padding" style="line-height: 24px">
+                  <p>渠道订单号 | 渠道用户编号</p>
+                  <div style="text-indent: 16px" class="vi-text is-color--gray">
+                    <p>{{ detail["channelOrderId"] }}</p>
+                    <p style="text-indent: 16px">{{ detail["subMemId"] }}</p>
+                  </div>
+                </div>
+                <div class="vi-padding" style="line-height: 24px">
+                  <p>交易金额(CNY) | 方式 | 类型</p>
+                  <p style="text-indent: 16px" class="vi-text is-color--gray">
+                    {{ detail["money"] }} | {{ detail["payMode"] }} |
+                    {{ getOrderType(detail["advertiseType"]) }}
+                  </p>
+                </div>
+                <div class="vi-padding" style="line-height: 24px">
+                  <p>交易状态 | 申诉状态</p>
+                  <p style="text-indent:16px" class="vi-text is-color--gray">
+                    {{
+                      ["已取消", "未付款", "已付款", "已完成"][
+                        detail["orderStatus"]
+                      ]
+                    }}
+                    | {{ getOrderStatus(detail["khStatus"]) }}
+                  </p>
+                </div>
+
+                <div
+                  class="vi-padding"
+                  style="line-height: 24px"
+                  v-if="detail['transferNumber'] || detail['transferTime']"
+                >
+                  <p>转账</p>
+                  <div class="vi-text is-color--gray" style="text-indent:16px">
+                    <p>数量(TTM)：{{ detail["transferNumber"] }}</p>
+                    <p>时间：{{ detail["transferTime"] }}</p>
+                  </div>
+                </div>
+
+                <div class="vi-padding" style="line-height: 24px">
+                  <p>时间</p>
+                  <div style="text-indent:16px" class="vi-text is-color--gray">
+                    <p>申诉：{{ detail["appealTime"] }}</p>
+                    <p v-if="!!detail['cancelTime']">
+                      取消：{{ detail["cancelTime"] }}
+                    </p>
+                    <p v-if="!!detail['releaseTime']">
+                      完成：{{ detail["releaseTime"] }}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="vui-padding">
+                  <Button size="large" long @click="closeAppeal()">
+                    关闭申述
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="height: 100%;"
+              class="vi-flex-item is-flex--1"
+            >
+              <div class="vi-chat">
+                <div class="vi-chat-body" ref="chat">
+                  <div
+                    v-if="!chat.push.finished"
+                    class="vi-margin-bottom vi-flex is-justify-content--center"
+                  >
+                    <i-button type="default" @click="getChatHistory(true)">
+                      加载更多
+                    </i-button>
+                  </div>
+                  <div
+                    class="vi-chat-row "
+                    :class="{
+                      'is-row--left': !isMine(item),
+                      'is-row--right': isMine(item)
+                    }"
+                    v-for="(item, index) in chat.list"
+                  >
+                    <div
+                      class="vi-chat-tag"
+                      style=""
+                      v-if="!isMine(item)"
+                    ></div>
+
+                    <div class="vi-chat-content">
+                      <div class="vi-chat-arrow"></div>
+                      <div class="vi-chat-message">
+                        <div>
+                          <span v-if="item.type === 0">{{ item.content }}</span>
+                          <img
+                            v-else
+                            :src="item.content"
+                            alt=""
+                            style="max-width:250px;max-height: 350px"
+                            @click="showPicture(item.content)"
+                          />
+                        </div>
+                        <div class="vi-margin-top" v-if="item.sendTimeStr">
+                          <span class="vi-text is-color--gray ">
+                            {{ item.sendTimeStr }}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="vi-chat-tag" style="" v-if="isMine(item)"></div>
+                  </div>
+                </div>
+                <div class="vi-chat-footer vi-padding">
+                  <div class="vi-flex">
+                    <label for="file-1" class="upload vi-margin-right">
+                      <Icon type="image" size="36"></Icon>
+                      <input type="file" id="file-1" @change="selectPic" />
+                    </label>
+
+                    <div class="vi-flex-item is-flex--1 vi-margin-right">
+                      <Input
+                        v-model="chat.message"
+                        size="large"
+                        ref="editable"
+                        @keyup.enter.native="sendMessage(chat.message)"
+                        placeholder="输入聊天内容 按回车键可发送"
+                      ></Input>
+                    </div>
+                    <div class="vi-margin-right">
+                      <Button type="primary" @click="sendMessage(chat.message)"
+                        >发送</Button
+                      >
+                    </div>
+
+                    <div class="">
+                      <Button @click="setLetter(chat.message)">
+                        记为常用语
+                      </Button>
+                    </div>
+                  </div>
+                  <div
+                    class="vi-padding vi-background is-background--gray"
+                    style="max-height: 150px;overflow: auto"
+                    v-if="letter.list.length > 0"
+                  >
+                    <Tag
+                      v-for="(item, index) in letter.list"
+                      ref="tagsPageOpened"
+                      :key="index"
+                      :name="item"
+                      @on-close="clearLetter(item)"
+                      @click.native="sendMessage(item)"
+                      closable
+                      >{{ item }}
+                    </Tag>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <div class="vv-custom--body" v-if="false">
         <div class="vv-custom--header">
           <div style="flex:2">
             <Button
@@ -874,15 +1192,19 @@ export default {
           </div>
         </div>
 
-        <div class="vv-custom-work" v-if="workList.length > 0 ">
+        <div class="vv-custom-work" v-if="workList.length > 0">
           <div style="text-align: center;line-height: 44px">
             <span style="font-weight: bold">正在工作中的客服成员</span>
           </div>
-          <div v-for="(item,index) in workList" class="vv-custom-work-item" style="line-height: 44px">
-             <div class="   ">
-               <span class="vui-margin-right--large">{{ item.realName }}</span>
-               <Button  size="small" @click="closeWork(item)">关闭</Button>
-             </div>
+          <div
+            v-for="(item, index) in workList"
+            class="vv-custom-work-item"
+            style="line-height: 44px"
+          >
+            <div class="   ">
+              <span class="vui-margin-right--large">{{ item.realName }}</span>
+              <Button size="small" @click="closeWork(item)">关闭</Button>
+            </div>
           </div>
         </div>
 
@@ -1110,15 +1432,16 @@ export default {
             <div>
               <Button type="primary" @click="sendMessage">发送</Button>
             </div>
-            <div class="vui-margin-left" v-if="storeCustomLetter.length > 0 ">
-              <Button   @click="letter.modal = true " type="warning">常用语</Button>
+            <div class="vui-margin-left" v-if="storeCustomLetter.length > 0">
+              <Button @click="letter.modal = true" type="warning"
+                >常用语</Button
+              >
             </div>
-            <div class="vui-margin-left" >
-              <Button   @click="createLetter(chat.message)">设置为常用语</Button>
+            <div class="vui-margin-left">
+              <Button @click="createLetter(chat.message)">设置为常用语</Button>
             </div>
           </div>
         </div>
-
       </div>
     </Card>
   </div>

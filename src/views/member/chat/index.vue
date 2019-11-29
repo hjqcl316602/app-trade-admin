@@ -7,18 +7,19 @@
  -->
 
 <script>
-import "./index.css";
 import { BASEURL } from "@/service/http";
 import Cookies from "js-cookie";
 import { getChatHistoryKfAndCd, getMemberChat } from "@/service/custom";
 
 import { uploadImage } from "@/service/common";
 import { memberManage } from "@/service/getData";
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 import { stringer } from "store-es";
-
+import { storager } from "../../../../package/es";
 var Stomp = require("stompjs");
 var SockJS = require("sockjs-client");
+
+console.log(storager);
 export default {
   name: "member-chat",
   data() {
@@ -62,15 +63,11 @@ export default {
           url: ""
         }
       },
-        letter:{
-            modal: false
-        }
+      letter: {
+        list: []
+      }
     };
   },
-    computed: mapState({
-        storeCustomLetter: state=> state.custom.letter
-    }),
-
   mounted() {
     this.init();
     this.getClipboardImage();
@@ -81,6 +78,32 @@ export default {
       this.createSocket();
       this.getUserList();
       this.getMemberChat();
+      this.getLetterList();
+    },
+    /**
+     * 描述：获取历史常用语
+     */
+    getLetterList() {
+      this.letter.list = storager.getStore("app/chat/letter") || [];
+    },
+    /**
+     * 描述：获取历史常用语
+     */
+    setLetter(message) {
+      if (!message) return this.$Message.error("常用语不能为空");
+      let letters = storager.getStore("app/chat/letter") || [];
+      if (letters.find(ele => ele === message)) return false;
+      letters.unshift(message);
+      this.letter.list = letters;
+      storager.setStore("app/chat/letter", letters);
+    },
+    /**
+     * 描述：清除历史常用语
+     */
+    clearLetter(message) {
+      let letters = storager.getStore("app/chat/letter") || [];
+      this.letter.list = letters.filter(ele => ele !== message);
+      storager.setStore("app/chat/letter", this.letter.list);
     },
     /**
      * 时间：2019/9/18 ,
@@ -345,7 +368,7 @@ export default {
     /**
      * 发送文本信息
      */
-    sendMessage() {
+    sendMessage(message) {
       if (!this.chat.connected) {
         this.$Message.error("当前聊天室连接未成功，请重试！");
         return;
@@ -354,22 +377,22 @@ export default {
         this.$Message.error("当前没有选择会员！");
         return;
       }
-      if (this.chat.message === "") {
+      if (message === "") {
         this.$Message.error("聊天内容不能为空！");
         return;
       }
 
-      if (stringer.check.space.whole(this.chat.message)) {
+      if (stringer.check.space.whole(message)) {
         this.$Message.error("聊天内容不能全部为空字符串！");
         return;
       }
 
-      if (this.chat.message.length > 150) {
+      if (message.length > 150) {
         this.$Message.error("聊天内容长度不能超过150");
         return;
       }
 
-      this.sendSocketMessage({ content: this.chat.message, type: 0 });
+      this.sendSocketMessage({ content: message, type: 0 });
       this.chat.message = "";
     },
 
@@ -393,28 +416,6 @@ export default {
       this.sendSocketMessage({ content: this.chat.pic, type: 1 });
       this.chat.pic = "";
     },
-      /**
-       * 设置常用语
-       */
-      createLetter(message){
-          if (message === "") {
-              return this.$Message.error("聊天内容不能为空！");
-          }
-          this.$store.commit('setLetter',message)
-      },
-      clearLetter({ id }){
-          this.$store.commit('clearLetter',id)
-      },
-      sendLetter({ text }){
-          if (!this.chat.connected) {
-              return this.$Message.error("当前聊天室连接未成功，请重试！");
-          }
-          if (this.member.activeIndex === -1) {
-              return this.$Message.error("当前没有选择会员！");
-          }
-          this.sendSocketMessage({ content: text, type: 0 });
-          this.letter.modal = false
-      },
     /**
      * 让滚动条始终在底部
      */
@@ -507,22 +508,6 @@ export default {
 
 <template>
   <div class="vv-chat">
-    <Modal class=""
-           v-model="letter.modal"
-           title="常用语"
-           width="50%"
-    >
-      <div class="" style="max-height: 500px;overflow: auto">
-        <div class="vui-margin-bottom" v-for="(item,index) in  storeCustomLetter" :key="index">
-          <span class="vui-margin-right">
-             {{ item.text }}
-          </span>
-          <Button type="primary"  size="small" @click="sendLetter(item)">发送</Button>
-          <Button type="error" size="small"  @click="clearLetter(item)">清除</Button>
-        </div>
-      </div>
-      <div slot="footer"></div>
-    </Modal>
     <Modal
       v-model="chat.picture.show"
       class="ivu-modal--preview"
@@ -541,7 +526,182 @@ export default {
         </Button>
       </p>
 
-      <div class="vv-chat--body">
+      <div>
+        <div class="vi-flex is-align-items--center vi-margin-bottom">
+          <div class="vi-margin-right">
+            <Poptip
+              trigger="hover"
+              content="请输入用户名、邮箱、手机号、姓名搜索"
+              placement="bottom-start"
+            >
+              <Input
+                placeholder="请输入用户名、邮箱、手机号、姓名搜索"
+                v-model="user.query"
+                @keyup.enter.native="getUserList(false)"
+              >
+              </Input>
+            </Poptip>
+          </div>
+          <div class=" ">
+            <i-button type="primary" @click="getUserList(false)">
+              搜索
+            </i-button>
+          </div>
+        </div>
+        <div class="vi-flex" style="height:calc(100vh - 260px)">
+          <div style="width: 250px;height: 100%;overflow: auto">
+            <div
+              class="vi-padding vi-border is-border--bottom is-border--thin"
+              @click="changeUser(item, index)"
+              v-for="(item, index) in user.list"
+            >
+              <div style="line-height: 32px">
+                <span class="vi-text is-weight--bold">{{ item.username }}</span>
+              </div>
+              <div
+                class="vi-flex is-justify-content--space-between"
+                style="line-height: 24px"
+              >
+                <span>{{ item.realName }}</span>
+                <span>{{ item.mobilePhone | formatPhone }}</span>
+              </div>
+            </div>
+            <div class="vi-padding" v-if="!user.push.finished">
+              <i-button type="default" long @click="getUserList(true)">
+                加载更多
+              </i-button>
+            </div>
+          </div>
+          <div style="width: 250px;height: 100%;overflow: auto">
+            <div
+              class="vi-border"
+              :class="{
+                'vi-background is-background--gray is-border--left is-border--primary is-border--bold':
+                  index === member.activeIndex
+              }"
+              v-for="(item, index) in member.list"
+              @click="changeMember(item, index)"
+            >
+              <div
+                class="vi-padding vi-border is-border--bottom is-border--thin  "
+              >
+                <div
+                  style="line-height: 32px"
+                  class="vi-flex is-justify-content--space-between"
+                >
+                  <span class="vi-text is-weight--bold">{{ item.cdName }}</span>
+
+                  <template v-if="item.unReadCnt !==0 ">
+                        <span class="vi-tag ">
+                            <span class="vi-tag-label">{{ item.unReadCnt }}</span>
+                          </span>
+                  </template>
+                </div>
+                <div
+                  class="vi-flex is-justify-content--space-between"
+                  style="line-height: 24px"
+                >
+                  <span>{{ item.mobilePhone | formatPhone }}</span>
+                  <span>{{ item.createTime }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="height: 100%;" class="vi-flex-item is-flex--1">
+            <div class="vi-chat">
+              <div class="vi-chat-body" ref="chat">
+                <div
+                  v-if="!chat.push.finished"
+                  class="vi-margin-bottom vi-flex is-justify-content--center"
+                >
+                  <i-button type="default" @click="getChatHistory(true)">
+                    加载更多
+                  </i-button>
+                </div>
+                <div
+                  class="vi-chat-row "
+                  :class="{
+                    'is-row--left': !isMine(item),
+                    'is-row--right': isMine(item)
+                  }"
+                  v-for="(item, index) in chat.list"
+                >
+                  <div class="vi-chat-tag" style="" v-if="!isMine(item)"></div>
+
+                  <div class="vi-chat-content">
+                    <div class="vi-chat-arrow"></div>
+                    <div class="vi-chat-message">
+                      <div>
+                        <span v-if="item.type === 0">{{ item.content }}</span>
+                        <img
+                          v-else
+                          :src="item.content"
+                          alt=""
+                          style="max-width:250px;max-height: 350px"
+                          @click="showPicture(item.content)"
+                        />
+                      </div>
+                      <div class="vi-margin-top" v-if="item.sendTimeStr">
+                        <span class="vi-text is-color--gray ">
+                          {{ item.sendTimeStr }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="vi-chat-tag" style="" v-if="isMine(item)"></div>
+                </div>
+              </div>
+              <div class="vi-chat-footer vi-padding">
+                <div class="vi-flex">
+                  <label for="file-1" class="upload vi-margin-right">
+                    <Icon type="image" size="36"></Icon>
+                    <input type="file" id="file-1" @change="selectPic" />
+                  </label>
+
+                  <div class="vi-flex-item is-flex--1 vi-margin-right">
+                    <Input
+                      v-model="chat.message"
+                      size="large"
+                      ref="editable"
+                      @keyup.enter.native="sendMessage(chat.message)"
+                      placeholder="输入聊天内容 按回车键可发送"
+                    ></Input>
+                  </div>
+                  <div class="vi-margin-right">
+                    <Button type="primary" @click="sendMessage(chat.message)"
+                      >发送</Button
+                    >
+                  </div>
+
+                  <div class="">
+                    <Button @click="setLetter(chat.message)">
+                      记为常用语
+                    </Button>
+                  </div>
+                </div>
+                <div
+                  class="vi-padding vi-background is-background--gray"
+                  style="max-height: 150px;overflow: auto"
+                  v-if="letter.list.length > 0"
+                >
+                  <Tag
+                    v-for="(item, index) in letter.list"
+                    ref="tagsPageOpened"
+                    :key="index"
+                    :name="item"
+                    @on-close="clearLetter(item)"
+                    @click.native="sendMessage(item)"
+                    closable
+                    >{{ item }}
+                  </Tag>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vv-chat--body" v-if="false">
         <div
           style="border-right:1px solid #e3e8ee;width:280px;position:relative;padding-top:50px"
         >
@@ -563,11 +723,9 @@ export default {
               </div>
             </div>
             <div class="vui-grid-child vui-flex-grow--0 vui-padding-right">
-              <i-button type="primary" @click="getUserList(false)"
-                >
+              <i-button type="primary" @click="getUserList(false)">
                 搜索
-              </i-button
-              >
+              </i-button>
             </div>
           </div>
 
@@ -601,8 +759,7 @@ export default {
             </div>
           </div>
         </div>
-
-        <div style="width:300px" v-if="member.list.length > 0 ">
+        <div style="width:300px" v-if="member.list.length > 0">
           <div class="vui-contain--vertical vui-overflow--auto">
             <div
               v-for="(item, index) in member.list"
@@ -633,7 +790,7 @@ export default {
           </div>
         </div>
 
-        <div class="vv-chat--chat">
+        <div class="vv-chat--chat" v-if="false">
           <div class="chat" ref="chat">
             <div class="chat-body">
               <div class="chat-more" v-if="!chat.push.finished">
@@ -722,33 +879,47 @@ export default {
               </div>
             </div>
           </div>
-          <div class="chat-send">
-            <label for="file" class="upload">
-              <Icon type="image" size="36"></Icon>
-              <input type="file" id="file" @change="selectPic" />
-            </label>
+          <div class="chat-send-wrap">
+            <div class="chat-send">
+              <label for="file" class="upload">
+                <Icon type="image" size="36"></Icon>
+                <input type="file" id="file" @change="selectPic" />
+              </label>
 
-            <div class="chat-send__input">
-              <Input
-                v-model="chat.message"
-                size="large"
-                ref="editable"
-                @keyup.enter.native="sendMessage"
-                placeholder="输入聊天内容 按回车键可发送"
-              ></Input>
-            </div>
-            <div>
-              <Button type="primary" @click="sendMessage">发送</Button>
-            </div>
-            <div class="vui-margin-left" v-if="storeCustomLetter.length > 0 ">
-              <Button   @click="letter.modal = true " type="warning">常用语</Button>
-            </div>
-            <div class="vui-margin-left" >
-              <Button   @click="createLetter(chat.message)">设置为常用语</Button>
+              <div class="chat-send__input">
+                <Input
+                  v-model="chat.message"
+                  size="large"
+                  ref="editable"
+                  @keyup.enter.native="sendMessage"
+                  placeholder="输入聊天内容 按回车键可发送"
+                ></Input>
+              </div>
+              <div>
+                <Button type="primary" @click="sendMessage">发送</Button>
+              </div>
+              <div class="vui-margin-left" v-if="storeCustomLetter.length > 0">
+                <Button @click="letter.modal = true" type="warning"
+                  >常用语</Button
+                >
+              </div>
+              <div class="vui-margin-left">
+                <Button @click="createLetter(chat.message)"
+                  >设置为常用语</Button
+                >
+              </div>
             </div>
           </div>
         </div>
-
+        <div class="chat-content" v-if="false">
+          <div class="chat-content-message"></div>
+          <div class="chat-content-send">
+            <span>房贷的收款发了说</span>
+            <div>
+              <span>胜多负少看到了时空来电</span>
+            </div>
+          </div>
+        </div>
       </div>
     </Card>
   </div>

@@ -50,10 +50,10 @@ export const MemberRealNameDetail = data => post('admin/member/member-applicatio
 //POST获取 "会员实名审核通过"
 export const memberCheckPass = data => patch(`admin/member/member-application/${data}/pass`);
 
-//POST获取 "会员实名审核不通过" 
+//POST获取 "会员实名审核不通过"
 export const memberCheckNotPass = (url, data) => patch(`admin/member/member-application/${url}/no-pass`, data);
 
-//POST获取 "内容管理" => "广告管理" 
+//POST获取 "内容管理" => "广告管理"
 export const manageAd = data => post('admin/cms/system-advertise/page-query', data);
 
 //POST "内容管理" => "添加广告"
@@ -101,7 +101,7 @@ export const announceManage = data => fetch('admin/system/announcement/page-quer
 //Post "内容管理" => "添加公告管理"
 export const addAnnounce = data => post('admin/system/announcement/create', data);
 
-//Post "内容管理" => "删除公告" 
+//Post "内容管理" => "删除公告"
 export const delAnnounce = data => patch('admin/system/announcement/deletes', data);
 
 // GET "内容管理" => "公告详情"
@@ -270,6 +270,15 @@ export const lockWallet = data => post('admin/member/member-wallet/lock-wallet',
 
 //post "会员管理" => "会员详情"=>"解锁钱包"
 export const unlockWallet = data => post('admin/member/member-wallet/unlock-wallet', data);
+
+//post "会员管理" => "会员详情"=>"冻结钱包"
+export const freezingWallet = data => post('admin/member/lockWallet', data);
+
+//post "会员管理" => "会员详情"=>"释放钱包"
+export const releaseWallet = data => post('admin/member/unlock', data);
+
+//post "会员管理" => "会员详情"=>"冻结列表"
+export const getLockList = data => post('admin/member/locklist', data);
 
 //post "币币管理" => "委托管理"=>"撤销"
 export const cancelOrder = data => post('admin/exchange/exchange-order/cancel', data);
@@ -490,3 +499,8 @@ export const authBusinessDetail = data => post('admin/business-auth/apply/detail
 
 // post获取 "系统管理" => 合伙人放币
 export const parnter = data => post('admin/system/coin/add-partner', data);
+
+// post获取 "系统管理" => 加入黑名单
+export const setBlack = data => post('admin/otc/order/blackList', data);
+
+

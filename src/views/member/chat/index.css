@@ -38,12 +38,13 @@
 
 .vv-chat--chat {
   flex: 1;
-  padding-bottom: 60px;
-  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat {
-  height: 100%;
+  flex:1;
   width: 100%;
   background: #f0f0f0;
   overflow-y: scroll;
@@ -173,11 +174,11 @@
   color: #6560ff;
   cursor: pointer;
 }
+.chat-send-wrap{
+  width: 100%;
+}
 
 .chat-send {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   display: flex;
   align-items: center;
   width: 100%;

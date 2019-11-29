@@ -21,15 +21,15 @@ export default {
       columnsTitle: [
         {
           key: "userName",
-          title: "用户名"
+          title: "用户名",
         },
         {
           title: " 真实姓名 / 电话号码 ",
-          render(h, params) {
+          render:(h, params)=> {
             let message =
               (params.row.realName || "--") +
               " | " +
-              (params.row.mobilePhone || "--");
+              ( this.formatPhone(params.row.mobilePhone) || "--");
             return h("span", message);
           }
         },
@@ -38,17 +38,19 @@ export default {
           title: "收款方式",
           render(h, params) {
             let type = params.row.type || 0;
-            let message = ["银行卡", "微信", "支付宝", "云闪付","聚合码"][type - 1];
+            let message = ["银行卡", "微信", "支付宝", "云闪付", "聚合码"][
+              type - 1
+            ];
             return h("span", message);
           }
         },
         {
           key: "type",
           title: "收款码 / 银行卡号",
-          render(h, params) {
+          render:(h, params)=> {
             let type = params.row.type || 0;
             if (type == 1) {
-              return h("span", params.row.url || "--");
+              return h("span", this.formatCard(params.row.url) || "--");
             } else {
               return h("img", {
                 attrs: {
@@ -67,7 +69,7 @@ export default {
           render(h, params) {
             let type = params.row.type || 0;
             let message = "";
-            if (type == 2 || type == 4 || type==5) {
+            if (type == 2 || type == 4 || type == 5) {
               message = params.row.payInfoname;
             } else {
               message =
@@ -122,11 +124,15 @@ export default {
                 "查看"
               )
             );
-            return h("div",{
-                style:{
-                    'text-align':'right'
+            return h(
+              "div",
+              {
+                style: {
+                  "text-align": "right"
                 }
-            }, html);
+              },
+              html
+            );
           }
         }
       ],

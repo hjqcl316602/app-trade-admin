@@ -11,18 +11,18 @@
         <div class="searchWrapper clearfix">
 					<div class="poptip">
 						<Poptip trigger="hover" content="请输入用户名、邮箱、手机号、姓名搜索" placement="bottom-start">
-							<Input placeholder="请输入用户名、邮箱、手机号、姓名搜索" 
-										v-model="filterSearch.account" 
+							<Input placeholder="请输入用户名、邮箱、手机号、姓名搜索"
+										v-model="filterSearch.account"
 										style="width: 300px"/>
-							</Input>      
+							</Input>
 						</Poptip>
 					</div>
 
 					<div class="poptip">
 						<span>会员状态：</span>
 						<Select v-model="filterSearch.commonStatus">
-							<Option v-for="item in memberStatusArr" 
-										:value="item.status" 
+							<Option v-for="item in memberStatusArr"
+										:value="item.status"
 										:key="item.status">{{ item.text }}</Option>
 						</Select>
 					</div>
@@ -38,10 +38,10 @@
       </Row>
 
       <Row class="margin-top-10 searchable-table-con1">
-          <Table 
-            :columns="columns_first" 
-            :data="userpage" 
-            border 
+          <Table
+            :columns="columns_first"
+            :data="userpage"
+            border
             :loading="ifLoading"
             ref="tabel"
             class='user_center'>
@@ -99,7 +99,10 @@ export default {
         },
         {
           title: '手机号码',
-          key: 'mobilePhone'
+          key: 'mobilePhone',
+            render:(h,{ row })=>{
+              return h('span',{},this.formatPhone(row.mobilePhone))
+            }
         },
       //  {
       //    title:"合伙人",
@@ -147,7 +150,7 @@ export default {
             }, statusTxt);
           }
         },
-				
+
         {
           title: '状态',
           key: 'status',
@@ -170,7 +173,7 @@ export default {
 						let memberTxt = !obj.row.status ? '禁用' : '解禁';
 						let memberStatusTrans = !obj.row.transactionStatus ? 1 : 0;
 						let memberTxtTrans = !obj.row.transactionStatus ? '允许交易' : '禁止交易';
-						// let 
+						// let
 						return h('div', {
 						}, [
 							h('Button', {
@@ -193,7 +196,7 @@ export default {
 								on: {
 									'on-click': (name) => {
 										if(name === 'forbidden') {
-											
+
 											forbiddenMember({ memberId: obj.row.id, status: memberStatus })
 											.then(res => {
 												if(!res.code) {
@@ -258,7 +261,7 @@ export default {
     exportExcel () {
       this.$refs.tabel.exportCsv({
         filename: 'hello'
-      }); 
+      });
     },
     searchByFilter(){
 			this.$store.commit('switchLoading', true);
@@ -273,7 +276,7 @@ export default {
 			})
 			.catch(err => console.log(err))
     },
-   
+
     changePage(pageIndex) {
       this.currentPageIdx = pageIndex;
 			this.ifLoading = true;

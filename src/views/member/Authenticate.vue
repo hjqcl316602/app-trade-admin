@@ -152,7 +152,7 @@ export default {
           render: (h, params) => {
             const row = params.row;
             const member = row.member.mobilePhone;
-            return h("span", {}, member);
+            return h("span", {}, this.formatPhone(member));
           }
         },
         {
