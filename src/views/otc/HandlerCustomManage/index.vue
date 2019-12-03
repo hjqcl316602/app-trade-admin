@@ -18,7 +18,8 @@ import {
   getChatHistory,
   closeAppeal,
   setChatStatus,
-  closeWork
+  closeWork,
+    minusScore
 } from "@/service/custom";
 import { stringer } from "store-es";
 
@@ -73,12 +74,18 @@ export default {
       detail: {},
       letter: {
         list: []
+      },
+      score:{
+        memberId:'',
+        memberName:"",
+          minusStatus:false
       }
+
     };
   },
-  computed: mapState({
-    storeCustomLetter: state => state.custom.letter
-  }),
+  computed:  mapState({
+          storeCustomLetter: state => state.custom.letter
+      }) ,
 
   mounted() {
     this.init();
@@ -223,6 +230,8 @@ export default {
             //console.log(res);
             this.detail = res;
             this.role.list = this.getRoleList(this.detail);
+            // 是否需要显示惩罚按钮
+            this.getMinusStatus()
 
             // 判断其未读数 先显示大于0的 暂时不默认打开
             // let index = this.role.list.findIndex(item => {
@@ -768,7 +777,37 @@ export default {
         }
       ];
       return item["uidType"] == 2 || item["uidType"] == 3;
-    }
+    },
+      /**
+       * 减分
+       */
+      minusScore(){
+          this.$Modal.confirm({
+              title: "确认提示",
+              content: `是否确认惩罚【${this.detail.memberName}】？`,
+              onOk: () => {
+                  let { memberId , orderId } = this.detail
+                  minusScore({ id:memberId}).then(res => {
+                      this.$Message.success("惩罚成功");
+                      this.setMinusOrder()
+                      this.getMinusStatus()
+                  });
+              }
+      })
+      },
+      setMinusOrder(){
+          let { memberId , orderId } = this.detail;
+          let  minusOrders = storager.getStore('app/minus/order') || [];
+          minusOrders.unshift({ memberId , orderId });
+          storager.setStore('app/minus/order',minusOrders.filter((item,index)=> index < 20))
+      },
+      getMinusStatus(){
+          let { memberId , orderId } = this.detail;
+          let  minusOrders = storager.getStore('app/minus/order') || [];
+          this.score.minusStatus = !!minusOrders.find(item=>{
+                return memberId === item.memberId && orderId === item.orderId
+            })
+      }
   },
   beforeDestroy() {
     this.closeSocket();
@@ -1031,6 +1070,14 @@ export default {
                 <div class="vui-padding">
                   <Button size="large" long @click="closeAppeal()">
                     关闭申述
+                  </Button>
+                </div>
+                <div class="vui-padding">
+                  <Button size="large" type="error" disabled long v-if="score.minusStatus">
+                    已惩罚
+                  </Button>
+                  <Button size="large" type="error" v-else long @click="minusScore()">
+                    惩罚（扣分）
                   </Button>
                 </div>
               </div>

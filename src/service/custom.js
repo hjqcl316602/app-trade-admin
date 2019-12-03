@@ -43,3 +43,6 @@ export const getMemberChat = data => request('/admin/member/memberChat', data );
 
 // 获取正在上班的客服
 export const closeWork = data => request('admin/otc/appeal/closeWork',data)
+
+// 惩罚
+export const minusScore = data => request('admin/member/minusScore',data)

@@ -285,14 +285,15 @@ export default {
         .then(res => {
           if (!res.code) {
             this.$Message.success(res.message);
-            this.searchByFilter(this.currentPageIdx)
+              let obj = Object.assign(this.filterSearch, { pageNo: this.currentPageIdx, pageSize: 10 });
+              this.refreshPage(obj);
           } else this.$Message.error(res.message);
         })
         .catch(err => console.log(err));
     },
-    searchByFilter(pageNo=1) {
-      this.currentPageIdx = pageNo;
-      let obj = Object.assign(this.filterSearch, { pageNo: pageNo, pageSize: 10 });
+    searchByFilter() {
+      this.currentPageIdx = 1;
+      let obj = Object.assign(this.filterSearch, { pageNo: this.currentPageIdx, pageSize: 10 });
       this.refreshPage(obj);
     },
     refreshPageManual() {
