@@ -503,4 +503,7 @@ export const parnter = data => post('admin/system/coin/add-partner', data);
 // post获取 "系统管理" => 加入黑名单
 export const setBlack = data => post('admin/otc/order/blackList', data);
 
+// post获取 "会员管理" => 开启、关闭抢单
+export const changeAutoOrder = data => post('admin/member/autoOrder', data);
+
 

@@ -229,6 +229,8 @@ export default {
           .then(res => {
             //console.log(res);
             this.detail = res;
+              this.detail.subMemId = null;
+              this.detail.subMobile = null;
             this.role.list = this.getRoleList(this.detail);
             // 是否需要显示惩罚按钮
             this.getMinusStatus()
@@ -271,16 +273,14 @@ export default {
         toTypeHistory: 0
       });
       roles.push({
-        userId: detail["subMemId"],
+        userId: '',
         label: "申诉者-用户",
-        userName: detail["subDealName"]
-          ? detail["subDealName"]
-          : detail["subMemId"],
-        mobile: detail["subMobile"],
+        userName: '',
+        mobile: '',
         cnt: detail["khUnreadCnt"],
         uidToType: 2,
         uidFromType: 1,
-        uidTo: detail["customerId"] + "_" + detail["subMemId"],
+        uidTo: detail["customerId"],
         toTypeHistory: 1
       });
       return roles;
@@ -314,7 +314,7 @@ export default {
       getChatHistory(params)
         .then(res => {
           let list = res.reverse();
-          console.table(list);
+          //console.table(list);
 
           this.chat.push.finished = this.chat.pageSize > list.length;
 
@@ -1009,7 +1009,7 @@ export default {
                           </span>
                       </template>
                     </p>
-                    <p class="vi-text is-size--smaller is-color--gray">
+                    <p class="vi-text is-size--smaller is-color--gray" v-if="item.userName">
                       {{ item.userName }} | {{ item.mobile | formatPhone}}
                     </p>
                   </div>
