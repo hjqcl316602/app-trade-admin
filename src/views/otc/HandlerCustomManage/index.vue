@@ -510,6 +510,8 @@ export default {
         uidType: roleItem["uidToType"]
       };
 
+      console.log(sendParams);
+
       this.chat.list.push(sendParams);
 
       this.scrollToBottom();

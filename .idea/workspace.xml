@@ -3,64 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d78a6022-d4b2-4e11-8204-4f31d1b36fcd" name="Default" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/basis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/basis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/0.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/1.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/10.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/11.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/12.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/13.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/14.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/15.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/16.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/17.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/18.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/19.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/2.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/20.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/21.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/22.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/23.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/24.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/25.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/26.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/27.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/28.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/29.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/3.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/30.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/31.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/32.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/33.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/34.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/35.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/36.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/37.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/38.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/39.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/4.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/40.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/41.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/42.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/43.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/44.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/45.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/46.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/47.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/48.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/49.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/5.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/50.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/51.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/6.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/7.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/8.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/9.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/main.2d6d537f2d2f2e732b68.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/main.2d6d537f2d2f2e732b68.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/vender-base.2d6d537f2d2f2e732b68.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/vender-exten.2d6d537f2d2f2e732b68.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -72,7 +15,50 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="512" column="28" selection-start-line="512" selection-start-column="28" selection-end-line="512" selection-end-column="28" />
+              <folding>
+                <element signature="e#189#210#0" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#template#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#1;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#2;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#4;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#div#2;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#Card#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#div#8;n#div#3;n#div#1;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -168,9 +154,9 @@
         <option value="$PROJECT_DIR$/src/service/custom.js" />
         <option value="$PROJECT_DIR$/src/service/http.js" />
         <option value="$PROJECT_DIR$/src/service/member.js" />
-        <option value="$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue" />
         <option value="$PROJECT_DIR$/src/views/member/chat/index.vue" />
         <option value="$PROJECT_DIR$/src/config/basis.js" />
+        <option value="$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue" />
       </list>
     </option>
   </component>
@@ -219,6 +205,27 @@
               <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
               <item name="exchange_admin_web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exchange_admin_web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exchange_admin_web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="otc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exchange_admin_web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="otc" type="462c0819:PsiDirectoryNode" />
+              <item name="HandlerCustomManage" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -294,7 +301,7 @@
       <workItem from="1575526458159" duration="4903000" />
       <workItem from="1575859281941" duration="3276000" />
       <workItem from="1575877120137" duration="5016000" />
-      <workItem from="1581915453758" duration="7913000" />
+      <workItem from="1581915453758" duration="9210000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1581921826974</created>
@@ -310,11 +317,18 @@
       <option name="project" value="LOCAL" />
       <updated>1581921928578</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update">
+      <created>1581941910593</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1581941910593</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119721000" />
+    <option name="totallyTimeSpent" value="121018000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -327,6 +341,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16596417" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -635,46 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="470" column="29" selection-start-line="470" selection-start-column="29" selection-end-line="470" selection-end-column="29" />
-          <folding>
-            <element signature="e#189#210#0" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#template#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#1;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#2;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#4;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#1;n#Card#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#div#8;n#div#3;n#div#1;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/member/Account.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -749,6 +724,46 @@
           <caret line="344" column="23" lean-forward="true" selection-start-line="344" selection-start-column="23" selection-end-line="344" selection-end-column="23" />
           <folding>
             <element signature="e#4433#4516#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="512" column="28" selection-start-line="512" selection-start-column="28" selection-end-line="512" selection-end-column="28" />
+          <folding>
+            <element signature="e#189#210#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#template#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#1;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#2;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#Card#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#div#8;n#div#3;n#div#1;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
