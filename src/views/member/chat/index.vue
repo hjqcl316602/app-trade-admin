@@ -260,7 +260,7 @@ export default {
     createSocket() {
       this.closeSocket();
 
-      let url = BASEURL + "chat/socket/chat-webSocket";
+      let url = BASEURL + "p/socket/chat-webSocket";
 
       let socket = new SockJS(url);
 
@@ -591,10 +591,10 @@ export default {
                 >
                   <span class="vi-text is-weight--bold">{{ item.cdName }}</span>
 
-                  <template v-if="item.unReadCnt !==0 ">
-                        <span class="vi-tag ">
-                            <span class="vi-tag-label">{{ item.unReadCnt }}</span>
-                          </span>
+                  <template v-if="item.unReadCnt !== 0">
+                    <span class="vi-tag ">
+                      <span class="vi-tag-label">{{ item.unReadCnt }}</span>
+                    </span>
                   </template>
                 </div>
                 <div

@@ -10,7 +10,7 @@
 import "./index.css";
 import { BASEURL } from "@/service/http";
 import Cookies from "js-cookie";
-import { storager } from '../../../../package/es'
+import { storager } from "../../../../package/es";
 import {
   getWorkBench,
   changeWorkStatus,
@@ -19,7 +19,7 @@ import {
   closeAppeal,
   setChatStatus,
   closeWork,
-    minusScore
+  minusScore
 } from "@/service/custom";
 import { stringer } from "store-es";
 
@@ -75,17 +75,16 @@ export default {
       letter: {
         list: []
       },
-      score:{
-        memberId:'',
-        memberName:"",
-          minusStatus:false
+      score: {
+        memberId: "",
+        memberName: "",
+        minusStatus: false
       }
-
     };
   },
-  computed:  mapState({
-          storeCustomLetter: state => state.custom.letter
-      }) ,
+  computed: mapState({
+    storeCustomLetter: state => state.custom.letter
+  }),
 
   mounted() {
     this.init();
@@ -229,11 +228,11 @@ export default {
           .then(res => {
             //console.log(res);
             this.detail = res;
-              this.detail.subMemId = null;
-              this.detail.subMobile = null;
+            this.detail.subMemId = null;
+            this.detail.subMobile = null;
             this.role.list = this.getRoleList(this.detail);
             // 是否需要显示惩罚按钮
-            this.getMinusStatus()
+            this.getMinusStatus();
 
             // 判断其未读数 先显示大于0的 暂时不默认打开
             // let index = this.role.list.findIndex(item => {
@@ -273,10 +272,10 @@ export default {
         toTypeHistory: 0
       });
       roles.push({
-        userId: '',
+        userId: "",
         label: "申诉者-用户",
-        userName: '',
-        mobile: '',
+        userName: "",
+        mobile: "",
         cnt: detail["khUnreadCnt"],
         uidToType: 2,
         uidFromType: 1,
@@ -377,7 +376,7 @@ export default {
     createSocket() {
       this.closeSocket();
 
-      let url = BASEURL + "chat/socket/chat-webSocket";
+      let url = BASEURL + "p/socket/chat-webSocket";
 
       //console.log(url);
 
@@ -778,36 +777,39 @@ export default {
       ];
       return item["uidType"] == 2 || item["uidType"] == 3;
     },
-      /**
-       * 减分
-       */
-      minusScore(){
-          this.$Modal.confirm({
-              title: "确认提示",
-              content: `是否确认惩罚【${this.detail.memberName}】？`,
-              onOk: () => {
-                  let { memberId , orderId } = this.detail
-                  minusScore({ id:memberId}).then(res => {
-                      this.$Message.success("惩罚成功");
-                      this.setMinusOrder()
-                      this.getMinusStatus()
-                  });
-              }
-      })
-      },
-      setMinusOrder(){
-          let { memberId , orderId } = this.detail;
-          let  minusOrders = storager.getStore('app/minus/order') || [];
-          minusOrders.unshift({ memberId , orderId });
-          storager.setStore('app/minus/order',minusOrders.filter((item,index)=> index < 20))
-      },
-      getMinusStatus(){
-          let { memberId , orderId } = this.detail;
-          let  minusOrders = storager.getStore('app/minus/order') || [];
-          this.score.minusStatus = !!minusOrders.find(item=>{
-                return memberId === item.memberId && orderId === item.orderId
-            })
-      }
+    /**
+     * 减分
+     */
+    minusScore() {
+      this.$Modal.confirm({
+        title: "确认提示",
+        content: `是否确认惩罚【${this.detail.memberName}】？`,
+        onOk: () => {
+          let { memberId, orderId } = this.detail;
+          minusScore({ id: memberId }).then(res => {
+            this.$Message.success("惩罚成功");
+            this.setMinusOrder();
+            this.getMinusStatus();
+          });
+        }
+      });
+    },
+    setMinusOrder() {
+      let { memberId, orderId } = this.detail;
+      let minusOrders = storager.getStore("app/minus/order") || [];
+      minusOrders.unshift({ memberId, orderId });
+      storager.setStore(
+        "app/minus/order",
+        minusOrders.filter((item, index) => index < 20)
+      );
+    },
+    getMinusStatus() {
+      let { memberId, orderId } = this.detail;
+      let minusOrders = storager.getStore("app/minus/order") || [];
+      this.score.minusStatus = !!minusOrders.find(item => {
+        return memberId === item.memberId && orderId === item.orderId;
+      });
+    }
   },
   beforeDestroy() {
     this.closeSocket();
@@ -928,20 +930,19 @@ export default {
         <div class="vi-flex" style="height:calc(100vh - 260px)">
           <template v-if="workList.length > 0">
             <div
-                    style="width: 150px;height: 100%;overflow: auto"
-                    class="vi-border is-border--right is-border--thin"
+              style="width: 150px;height: 100%;overflow: auto"
+              class="vi-border is-border--right is-border--thin"
             >
               <div class="vi-text is-align--center" style="line-height: 48px">
                 <span class="vi-text is-weight--bold">工作中客服</span>
               </div>
-              <div
-                      class="vi-border"
-                      v-for="(item, index) in workList"
-              >
+              <div class="vi-border" v-for="(item, index) in workList">
                 <div
-                        class="vi-padding vi-border is-border--bottom is-border--thin"
+                  class="vi-padding vi-border is-border--bottom is-border--thin"
                 >
-                  <div   class="vi-flex is-justify-content--space-between is-align-items--center">
+                  <div
+                    class="vi-flex is-justify-content--space-between is-align-items--center"
+                  >
                     <span>{{ item.realName }}</span>
                     <Button size="small" @click="closeWork(item)">关闭</Button>
                   </div>
@@ -969,12 +970,15 @@ export default {
                 <div
                   class="vi-padding vi-border is-border--bottom is-border--thin"
                 >
-                  <div class="vi-flex is-justify-content--space-between" style="line-height: 32px">
+                  <div
+                    class="vi-flex is-justify-content--space-between"
+                    style="line-height: 32px"
+                  >
                     <span>{{ item.orderSn }}</span>
-                    <template v-if="item.cnt !==0 ">
-                        <span class="vi-tag ">
-                            <span class="vi-tag-label">{{ item.cnt }}</span>
-                          </span>
+                    <template v-if="item.cnt !== 0">
+                      <span class="vi-tag ">
+                        <span class="vi-tag-label">{{ item.cnt }}</span>
+                      </span>
                     </template>
                   </div>
                 </div>
@@ -1003,14 +1007,17 @@ export default {
                   <div style="line-height: 24px">
                     <p class="vi-flex is-justify-content--space-between">
                       <span>{{ item.label }}</span>
-                      <template v-if="item.cnt !==0 ">
+                      <template v-if="item.cnt !== 0">
                         <span class="vi-tag ">
-                            <span class="vi-tag-label">{{ item.cnt }}</span>
-                          </span>
+                          <span class="vi-tag-label">{{ item.cnt }}</span>
+                        </span>
                       </template>
                     </p>
-                    <p class="vi-text is-size--smaller is-color--gray" v-if="item.userName">
-                      {{ item.userName }} | {{ item.mobile | formatPhone}}
+                    <p
+                      class="vi-text is-size--smaller is-color--gray"
+                      v-if="item.userName"
+                    >
+                      {{ item.userName }} | {{ item.mobile | formatPhone }}
                     </p>
                   </div>
                 </div>
@@ -1073,20 +1080,29 @@ export default {
                   </Button>
                 </div>
                 <div class="vui-padding">
-                  <Button size="large" type="error" disabled long v-if="score.minusStatus">
+                  <Button
+                    size="large"
+                    type="error"
+                    disabled
+                    long
+                    v-if="score.minusStatus"
+                  >
                     已惩罚
                   </Button>
-                  <Button size="large" type="error" v-else long @click="minusScore()">
+                  <Button
+                    size="large"
+                    type="error"
+                    v-else
+                    long
+                    @click="minusScore()"
+                  >
                     惩罚（扣分）
                   </Button>
                 </div>
               </div>
             </div>
 
-            <div
-              style="height: 100%;"
-              class="vi-flex-item is-flex--1"
-            >
+            <div style="height: 100%;" class="vi-flex-item is-flex--1">
               <div class="vi-chat">
                 <div class="vi-chat-body" ref="chat">
                   <div
