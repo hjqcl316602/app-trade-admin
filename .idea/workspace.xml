@@ -1,70 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d78a6022-d4b2-4e11-8204-4f31d1b36fcd" name="Default" comment="">
+    <list default="true" id="d78a6022-d4b2-4e11-8204-4f31d1b36fcd" name="Default" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/http.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/member.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/member.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/member/chat/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/member/chat/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/basis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/basis.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/0.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/1.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/10.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/11.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/12.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/13.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/14.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/15.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/16.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/17.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/18.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/19.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/2.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/20.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/21.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/22.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/23.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/24.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/25.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/26.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/27.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/28.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/29.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/3.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/30.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/31.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/32.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/33.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/34.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/35.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/36.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/37.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/38.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/39.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/4.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/40.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/41.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/42.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/43.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/44.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/45.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/46.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/47.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/48.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/49.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/5.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/50.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/51.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/6.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/7.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/8.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/9.da7847ad667679a923a4.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/main.da7847ad667679a923a4.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/main.da7847ad667679a923a4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/vender-base.da7847ad667679a923a4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/webapp/vender-exten.da7847ad667679a923a4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/0.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/1.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/10.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/11.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/12.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/13.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/14.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/15.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/16.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/17.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/18.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/19.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/2.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/20.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/21.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/22.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/23.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/24.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/25.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/26.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/27.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/28.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/29.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/3.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/30.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/31.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/32.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/33.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/34.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/35.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/36.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/37.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/38.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/39.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/4.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/40.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/41.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/42.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/43.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/44.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/45.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/46.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/47.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/48.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/49.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/5.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/50.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/51.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/6.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/7.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/8.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/9.2d6d537f2d2f2e732b68.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/main.2d6d537f2d2f2e732b68.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/main.2d6d537f2d2f2e732b68.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/vender-base.2d6d537f2d2f2e732b68.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/webapp/vender-exten.2d6d537f2d2f2e732b68.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -76,114 +72,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/service/custom.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/service/common.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#176#218#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="470" column="29" selection-start-line="470" selection-start-column="29" selection-end-line="470" selection-end-column="29" />
-              <folding>
-                <element signature="e#189#210#0" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#Modal#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#template#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#1;n#div#1;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#1;n#div#2;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#3;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#4;n#div#2;n#div#1;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#template#1;n#div#1;n#div#0;n#Card#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#1;n#Card#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#style#0;n#div#8;n#div#3;n#div#1;n#Card#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/member/chat/index.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="267" lean-forward="true" selection-start-line="267" selection-end-line="267" />
-              <folding>
-                <element signature="e#189#230#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/service/http.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="85" column="2" lean-forward="true" selection-start-line="85" selection-start-column="2" selection-end-line="85" selection-end-column="2" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/service/socket.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="2" column="29" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/service/member.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="3" column="33" lean-forward="true" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -194,10 +83,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>oss/image</find>
-      <find>order.list</find>
-      <find>setStore</find>
-      <find>getBasisMessage</find>
       <find>showInfoModal</find>
       <find>vv-</find>
       <find>scrollToBottom</find>
@@ -224,6 +109,10 @@
       <find>/res/</find>
       <find>/chat/</find>
       <find>chat/</find>
+      <find>resourceNotice</find>
+      <find>getNotice</find>
+      <find>setNoticeTimer</find>
+      <find>changeNotice</find>
     </findStrings>
     <replaceStrings>
       <replace>../webapp/</replace>
@@ -281,6 +170,7 @@
         <option value="$PROJECT_DIR$/src/service/member.js" />
         <option value="$PROJECT_DIR$/src/views/otc/HandlerCustomManage/index.vue" />
         <option value="$PROJECT_DIR$/src/views/member/chat/index.vue" />
+        <option value="$PROJECT_DIR$/src/config/basis.js" />
       </list>
     </option>
   </component>
@@ -329,42 +219,6 @@
               <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
               <item name="exchange_admin_web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="exchange_admin_web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="exchange_admin_web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="member" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="exchange_admin_web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="member" type="462c0819:PsiDirectoryNode" />
-              <item name="chat" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="exchange_admin_web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="otc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exchange_admin_web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="exchange_admin_web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="otc" type="462c0819:PsiDirectoryNode" />
-              <item name="HandlerCustomManage" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -440,18 +294,41 @@
       <workItem from="1575526458159" duration="4903000" />
       <workItem from="1575859281941" duration="3276000" />
       <workItem from="1575877120137" duration="5016000" />
-      <workItem from="1581915453758" duration="2302000" />
+      <workItem from="1581915453758" duration="7913000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1581921826974</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581921826974</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update">
+      <created>1581921928578</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1581921928578</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114110000" />
+    <option name="totallyTimeSpent" value="119721000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17334037" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16596417" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -460,8 +337,8 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3061889" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32899022" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.5200869" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
@@ -476,39 +353,15 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="775">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/libs/random.string.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/modules/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/otc/orderManage.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12617">
           <caret line="415" column="26" selection-start-line="415" selection-start-column="26" selection-end-line="415" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Main.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5146">
-          <caret line="166" column="32" selection-start-line="166" selection-start-column="32" selection-end-line="166" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -624,13 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/member/Account.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1674">
-          <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/member/MemberDetail.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="713">
@@ -663,13 +509,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="992">
           <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -761,13 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/basis.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="4" column="37" lean-forward="true" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/service/finance.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -800,27 +632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
           <caret line="2" column="29" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/http.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="85" column="2" lean-forward="true" selection-start-line="85" selection-start-column="2" selection-end-line="85" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#176#218#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -864,12 +675,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/member/Account.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="16" column="59" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="59" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#176#218#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/member/chat/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="267" lean-forward="true" selection-start-line="267" selection-end-line="267" />
+        <state relative-caret-position="-5920">
+          <caret line="260" column="25" lean-forward="true" selection-start-line="260" selection-start-column="25" selection-end-line="260" selection-end-column="25" />
           <folding>
             <element signature="e#189#230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/http.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/caculate/caculate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/api.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/basis.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="164" column="7" selection-start-line="164" selection-start-column="7" selection-end-line="164" selection-end-column="7" />
+          <folding>
+            <element signature="e#5013#5041#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Main.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3345">
+          <caret line="344" column="23" lean-forward="true" selection-start-line="344" selection-start-column="23" selection-end-line="344" selection-end-column="23" />
+          <folding>
+            <element signature="e#4433#4516#0" expanded="true" />
           </folding>
         </state>
       </provider>
