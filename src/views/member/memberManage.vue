@@ -192,7 +192,7 @@ export default {
               ? "允许交易"
               : "禁止交易";
             let id = obj.row.id;
-              let autoOrder = obj.row.autoOrder;
+            let autoOrder = obj.row.autoOrder;
             let btns = [];
             btns.push(
               h(
@@ -217,7 +217,8 @@ export default {
               )
             );
 
-            let autoOrderName = autoOrder === 0 ? "开启自动抢单":"关闭自动抢单";
+            let autoOrderName =
+              autoOrder === 0 ? "开启自动抢单" : "关闭自动抢单";
             btns.push(
               h(
                 "Dropdown",
@@ -261,18 +262,26 @@ export default {
                             direction: 1
                           });
                         });
+                      } else if (name === "fixed") {
+                        this.$router.push({
+                          name: "member:fixed",
+                          query: { memberId: obj.row.id }
+                        });
                       } else if (name === "autoOrder") {
-                          changeAutoOrder({ id , autoOrder:Math.abs(autoOrder-1) }).then(({ code , data ,message })=>{
-                              if( code === 0 ){
-                                  this.$Message.success(message);
-                                  this.refreshPage({
-                                      pageNo: this.currentPageIdx,
-                                      pageSize: 10,
-                                      property: "registrationTime",
-                                      direction: 1
-                                  });
-                              }else this.$Message.danger(message)
-                          })
+                        changeAutoOrder({
+                          id,
+                          autoOrder: Math.abs(autoOrder - 1)
+                        }).then(({ code, data, message }) => {
+                          if (code === 0) {
+                            this.$Message.success(message);
+                            this.refreshPage({
+                              pageNo: this.currentPageIdx,
+                              pageSize: 10,
+                              property: "registrationTime",
+                              direction: 1
+                            });
+                          } else this.$Message.danger(message);
+                        });
                       }
                     }
                   }
@@ -283,36 +292,44 @@ export default {
                     {
                       slot: "list"
                     },
-                      [
-                          h(
-                              "DropdownItem",
-                              {
-                                  props: {
-                                      name: "forbidden"
-                                  }
-                              },
-                              memberTxt
-                          ),
-                          h(
-                              "DropdownItem",
-                              {
-                                  props: {
-                                      name: "forbiddenTrans"
-                                  }
-                              },
-                              memberTxtTrans
-                          ),
-                          h(
-                              "DropdownItem",
-                              {
-                                  props: {
-                                      name: "autoOrder"
-                                  }
-                              },
-                              autoOrderName
-                          )
-
-                      ]
+                    [
+                      h(
+                        "DropdownItem",
+                        {
+                          props: {
+                            name: "forbidden"
+                          }
+                        },
+                        memberTxt
+                      ),
+                      h(
+                        "DropdownItem",
+                        {
+                          props: {
+                            name: "forbiddenTrans"
+                          }
+                        },
+                        memberTxtTrans
+                      ),
+                      h(
+                        "DropdownItem",
+                        {
+                          props: {
+                            name: "fixed"
+                          }
+                        },
+                        "预定金额"
+                      ),
+                      h(
+                        "DropdownItem",
+                        {
+                          props: {
+                            name: "autoOrder"
+                          }
+                        },
+                        autoOrderName
+                      )
+                    ]
                   ),
                   h(
                     "Button",
@@ -339,7 +356,6 @@ export default {
     };
   },
   methods: {
-
     refreshPageManual() {
       for (let val in this.filterSearch) {
         this.filterSearch[val] = "";
