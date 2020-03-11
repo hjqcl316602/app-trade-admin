@@ -86,8 +86,8 @@
         <div class="tableWrapper">
           <Table :columns="assetColumns" :data="assetRows"></Table>
         </div>
-        <template v-if="freezing.list.length > 0 ">
-          <p class="lineTitle vi-text is-weight--bold" >
+        <template v-if="freezing.list.length > 0">
+          <p class="lineTitle vi-text is-weight--bold">
             <Icon type="bookmark"></Icon>冻结记录
           </p>
           <div class="tableWrapper">
@@ -116,11 +116,11 @@
           </p>
         </Modal>
         <Modal
-                class=""
-                width="400"
-                v-model="freezing.modal"
-                @on-ok="setFreezing"
-                @on-cancel="$Message.info('已取消！')"
+          class=""
+          width="400"
+          v-model="freezing.modal"
+          @on-ok="setFreezing"
+          @on-cancel="$Message.info('已取消！')"
         >
           <h3 class="header" slot="header">
             <Icon type="information-circled"></Icon>
@@ -133,17 +133,20 @@
           <div class="vi-margin-bottom vi-flex is-align-items--center">
             <span>数量：</span>
             <div class="vi-flex-item is-flex--1">
-              <i-input v-model="freezing.number" placeholder="请输入冻结数量"></i-input>
+              <i-input
+                v-model="freezing.number"
+                placeholder="请输入冻结数量"
+              ></i-input>
             </div>
           </div>
           <div class=" vi-margin-bottom vi-flex is-align-items--center">
             <span>理由：</span>
             <div class="vi-flex-item is-flex--1">
               <i-input
-                      type="textarea"
-                      :rows="4"
-                      v-model="freezing.remark"
-                      placeholder="请输入冻结理由"
+                type="textarea"
+                :rows="4"
+                v-model="freezing.remark"
+                placeholder="请输入冻结理由"
               ></i-input>
             </div>
           </div>
@@ -466,93 +469,99 @@ export default {
       assetRows: [],
       freezing: {
         columns: [
-            {
-                title: "编号",
-                key: 'id'
-            },
-            {
-                title: "币种",
-                key: 'coinId'
-            },
-            {
-                title: "数量",
-                key: 'frozen'
-            },
-            {
-                title: "操作人编号",
-                key: 'memberId'
-            },
-            {
-                title: "冻结时间",
-                key: 'created'
-            },
-            {
-                title: "冻结理由",
-                key: 'remark'
-            },
-            {
-                title: "操作",
-                render: (h, param) => {
-                    return h("Button", {
-                        props:{
-                            type:'error'
-                        },
-                        on:{
-                            click:()=>{
-                                let { id } = param.row
-                                this.releaseWallet({ id })
-                            }
-                        }
-                    }, '解冻');
-                }
-            },
+          {
+            title: "编号",
+            key: "id"
+          },
+          {
+            title: "币种",
+            key: "coinId"
+          },
+          {
+            title: "数量",
+            key: "frozen"
+          },
+          {
+            title: "用户编号",
+            key: "memberId"
+          },
+          {
+            title: "冻结时间",
+            key: "created"
+          },
+          {
+            title: "冻结理由",
+            key: "remark"
+          },
+          {
+            title: "操作",
+            render: (h, param) => {
+              return h(
+                "Button",
+                {
+                  props: {
+                    type: "error"
+                  },
+                  on: {
+                    click: () => {
+                      let { id } = param.row;
+                      this.releaseWallet({ id });
+                    }
+                  }
+                },
+                "解冻"
+              );
+            }
+          }
         ],
-          list:[],
+        list: [],
         modal: false,
         id: "",
         unit: "",
-        number: '',
+        number: "",
         remark: ""
       }
     };
   },
   methods: {
-      getLockList(){
-          let id = getStore("memberID")
-          getLockList({ id }).then(({ code , data , message })=>{
-            //console.log(res)
-              if( code === 0 ){
-                  this.freezing.list = data;
-                  this.$Message.success(message)
-              }else this.$Message.error(message)
-          })
-      },
-    setFreezing() {
-          if(isNaN(this.freezing.number) || this.freezing.number <= 0) return this.$Message.error('请输入有效的数量');
-        if(!this.freezing.remark) return this.$Message.error('请输入冻结理由');
-        let { id ,unit , number , remark } = this.freezing;
-          freezingWallet({ id:getStore("memberID") ,unit , number , remark }).then(({ code,message  })=>{
-              if(code === 0 ){
-                  this.$Message.success(message)
-                  this.refreshPage()
-              }else this.$Message.error(message)
-          })
+    getLockList() {
+      let id = getStore("memberID");
+      getLockList({ id }).then(({ code, data, message }) => {
+        //console.log(res)
+        if (code === 0) {
+          this.freezing.list = data;
+          this.$Message.success(message);
+        } else this.$Message.error(message);
+      });
     },
-      releaseWallet({ id }){
-          this.$Modal.confirm({
-              title: '解冻',
-              content: '是否确认解冻？',
-              onOk: () => {
-                  releaseWallet( { id }).then(({ code , message })=>{
-                      if( code === 0 ){
-                          this.$Message.success(message)
-                          this.refreshPage()
-                      }else this.$Message.error(message)
-                  })
-              }
+    setFreezing() {
+      if (isNaN(this.freezing.number) || this.freezing.number <= 0)
+        return this.$Message.error("请输入有效的数量");
+      if (!this.freezing.remark) return this.$Message.error("请输入冻结理由");
+      let { id, unit, number, remark } = this.freezing;
+      freezingWallet({ id: getStore("memberID"), unit, number, remark }).then(
+        ({ code, message }) => {
+          if (code === 0) {
+            this.$Message.success(message);
+            this.refreshPage();
+          } else this.$Message.error(message);
+        }
+      );
+    },
+    releaseWallet({ id }) {
+      this.$Modal.confirm({
+        title: "解冻",
+        content: "是否确认解冻？",
+        onOk: () => {
+          releaseWallet({ id }).then(({ code, message }) => {
+            if (code === 0) {
+              this.$Message.success(message);
+              this.refreshPage();
+            } else this.$Message.error(message);
           });
-
-      },
+        }
+      });
+    },
     handelChange(timeRange) {
       if (timeRange[0]) {
         this.filterSearch.startTime = timeRange[0] + " 00:00:00";
@@ -647,7 +656,7 @@ export default {
           this.personRecode(this.filterSearch);
         } else this.$Message.err("个人资料获取失败!");
       });
-      this.getLockList()
+      this.getLockList();
     }
   },
   created() {
@@ -662,7 +671,6 @@ export default {
         console.log(err);
       });
     this.refreshPage();
-
   }
 };
 </script>
